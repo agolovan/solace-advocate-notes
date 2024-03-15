@@ -4,8 +4,17 @@ import { AdminRoute, buildConfig } from "payload/config";
 import AdvocateNotes from "./components/AdvocateNotes";
 import Users from "./collections/Users";
 import AfterNavLinks from "./components/AfterNavLinks";
+import SolaceLanding from "./components/SolaceLanding";
 
-const modelsRoute: AdminRoute = {
+const homeRoute: AdminRoute = {
+  Component: SolaceLanding,
+  path: "/home",
+  exact: true,
+  sensitive: false,
+  strict: false,
+};
+
+const advocateNotesRoute: AdminRoute = {
   Component: AdvocateNotes,
   path: "/advocate-notes",
   exact: true,
@@ -37,7 +46,7 @@ export default buildConfig({
       return newConfig;
     },
     components: {
-      routes: [modelsRoute],
+      routes: [homeRoute, advocateNotesRoute],
       afterNavLinks: [AfterNavLinks],
     },
   },

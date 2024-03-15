@@ -527,7 +527,17 @@ ul {
   transform: rotate(180deg);
 }
 
-.modelsContainer {
-  padding: 3% 4%;
+.solaceLandingContainer {
+  padding: 5% 5%;
   height: 100%;
+}
+
+.solaceLanding {
+  display: flex;
+  justify-content: center;
+
+}
+
+.solaceLandingImage {
+  width: 20%
 }
