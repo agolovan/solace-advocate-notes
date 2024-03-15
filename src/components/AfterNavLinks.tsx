@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useConfig } from 'payload/components/utilities';
-import { Button } from 'payload/components/elements';
+import React, { useEffect } from "react";
+import { useConfig } from "payload/components/utilities";
+import { Button } from "payload/components/elements";
 
-import './Components.scss';
-import { API, CUSTOM, ENVIRONMENT_VARIABLES, V1 } from '../constants/routes';
+import "./Components.scss";
+import { API, CUSTOM, ENVIRONMENT_VARIABLES, V1 } from "../constants/routes";
 
-const baseClass = 'after-nav-links';
+const baseClass = "after-nav-links";
 
 const AfterNavLinks: React.FC = () => {
   const {
