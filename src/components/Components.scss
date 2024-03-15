@@ -1,0 +1,533 @@
+@import '~payload/scss';
+
+.content {
+  margin-top: 3%;
+}
+
+ul {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  list-style-type: none;
+}
+
+.custom-minimal-route {
+  &__login-btn {
+    margin-right: base(0.5);
+  }
+}
+
+.required-property {
+  display: flex;
+  align-items: flex-start;
+
+  .required-control {
+    width: 95%;
+  }
+
+  .required-remove {
+    width: 10%;
+  }
+}
+
+.new-property {
+  font-weight: 500;
+  margin-bottom: base(0.4);
+}
+
+.version-modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.version-viewButton {
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  width: 15%;
+  height: 10%;
+}
+
+.version-closeButton {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 3%;
+  top: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.version-modalCurrentContainer,
+.version-modalPreviousContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 80%;
+  gap: 2%;
+}
+
+.version-fieldsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  gap: 10px;
+}
+
+.versionHighlight {
+  background: rgb(253, 232, 67);
+}
+
+.version-innerFieldContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.version-fieldContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.version-fieldNames {
+  margin: 0;
+}
+
+.version-top {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.version-modalCurrentTitle {
+  margin: 0;
+}
+
+.version-selector {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.version-selectorLeftBtn,
+.version-selectorRightBtn {
+  width: 20%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.version-selectorIndicator {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.version-setCurrentBtn {
+  width: 80%;
+  height: 5%;
+}
+
+.collapsibleControl {
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+.cancel-button {
+  float: right;
+}
+
+.collapsibleContainer {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.removeFieldButton {
+  margin: 2.5%;
+}
+
+.field-prop-input {
+  width: 100%;
+}
+
+.field-prop {
+  justify-content: center;
+  align-items: center;
+}
+
+.removePropButton {
+  margin-left: 2%;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+}
+
+.option {
+  width: 95%;
+}
+
+.removeOptionFirstRow {
+  margin-top: 6.5%;
+  margin-left: 1.5%;
+}
+
+.removeOptionAnyRow {
+  margin-top: 1.5%;
+  margin-left: 1.5%;
+}
+
+.removeOptionButton {
+  display: flex;
+  margin: 0;
+}
+
+.addOptionButton {
+  margin-top: -0.4%;
+}
+
+.selectedCollection {
+  background: #b9b9b9;
+}
+
+// Export Import Models Styles
+.import-container,
+.export-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.import-inner,
+.export-inner {
+  width: 90%;
+  height: 95%;
+}
+
+.import-modelsList,
+.import-modelsList {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: 5%;
+  align-content: flex-start;
+}
+
+.import-message {
+  font-size: 2rem;
+}
+
+.export-import-container-control {
+  padding: 3% 4%;
+}
+
+.export-import-modelsList-control {
+  padding-left: 0;
+  flex-wrap: wrap;
+}
+
+.messageText {
+  display: block;
+  font-size: 2rem;
+}
+
+.customImportersTempPadding {
+  padding-bottom: 8%;
+}
+
+.customImportersPaddingLeft {
+  padding-left: 2%;
+}
+
+// DropZone
+.dropzone-container {
+  width: 100%;
+  height: 20%;
+  border: 1.5px dashed #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  margin: 3% 0;
+}
+
+.actionButton {
+  margin-left: 2%;
+}
+
+.reorderFields {
+  width: 30%;
+}
+
+// Settings
+.settingsContainer {
+  padding: 7%;
+}
+.tagLabelSettingsContainer {
+  color: rgb(154, 154, 154);
+}
+.settingsContainer .rs__control,
+.tagManagerContainer .rs__control {
+  height: 3.8461538462rem !important;
+}
+.settingsContainer .rs__control .rs__input-container .rs__input,
+.tagManagerContainer .rs__control .rs__input-container .rs__input {
+  box-shadow: none !important;
+  caret-color: transparent !important;
+}
+
+// Toggle Development Features
+.toggleDevelopmentFeaturescontainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30%;
+}
+.toggleDevelopmentFeaturescontainer span {
+  display: flex;
+}
+.toggleDevelopmentFeaturescontainer input[type='checkbox'] {
+  box-shadow: 0 2px 3px 0 rgba(0, 2, 4, 0.05),
+    0 10px 4px -8px rgba(0, 2, 4, 0.02) !important;
+  font-family: var(--font-body) !important;
+  width: 100% !important;
+  border: 1px solid var(--theme-elevation-150) !important;
+  background: var(--theme-input-bg) !important;
+  color: var(--theme-elevation-800) !important;
+  border-radius: 0 !important;
+  font-size: 1rem !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  position: relative !important;
+  width: 1.9230769231rem !important;
+  height: 1.9230769231rem !important;
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 7px;
+    width: 8px;
+    height: 14px;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    border-color: black;
+  }
+}
+
+// Tag Management Page
+.tagManagerContainer {
+  padding: 7% 14% 7% 7%;
+}
+.tagManagerContainer .rs_control,
+.tagManagerContainer .react-select--single-value,
+.tagManagerContainer .react-select--single-value .rs__input {
+  height: 2.8846153846rem !important;
+}
+.tagManagerContainer .field-type.text {
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.searchFilterType {
+  margin-left: 2%;
+}
+
+.registrationSelect {
+  width: 50%;
+}
+
+.selectFieldContainer {
+  padding: 2%;
+}
+// NOTE: For some reason, this is not hitting
+.tagManagerContainer .field-type .selectFieldContainer .tagsearch {
+  display: flex;
+  font-size: 15px;
+}
+.tagManagerContainer .tagSearchContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tagManagerContainer .tagSearchContainer .tagSearchSubContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2%;
+}
+.tagManagerContainer .tagSearchContainer .tagSearchSubContainer .react-select {
+  width: 50%;
+}
+.tagManagerContainer .clearButtonContainer {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 2%;
+  width: 100%;
+}
+.tagManagerContainer .clearButtonContainer #clearButton {
+  width: 20%;
+}
+.tagManagerContainer .searchBy {
+  display: flex;
+  font-size: 15px;
+  padding: 1% 2%;
+}
+.tagManagerContainer .tagsToAddContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.tagManagerContainer .tagsToAddContainer .react-select {
+  width: 50% !important;
+}
+.tagManagerContainer .executeButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 22%;
+  margin-left: 1%;
+}
+.tagManagerContainer .executeButtonContainer #executeButton {
+  width: 100%;
+}
+.tagManagerContainer .tagsToAddContainer .itemsSelectedContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18%;
+}
+
+.selectFieldInnerContainer,
+.searchInputInnerContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.selectFieldName,
+.searchInput {
+  width: 10%;
+  margin-right: 2%;
+}
+.selectFieldInnerContainer .react-select {
+  width: 40%;
+}
+.selectFieldInnerContainer .rs__control {
+  height: 2.8846153846rem !important;
+}
+.selectFieldInnerContainer .rs__control .rs__input-container .rs__input {
+  box-shadow: none !important;
+  caret-color: transparent !important;
+}
+.tagManagerContainer .form-submit {
+  display: flex;
+  justify-content: flex-end;
+  width: 30%;
+  padding-right: 5%;
+}
+.tagManagerContainer .form-submit .btn {
+  width: 80%;
+  background-color: var(--theme-elevation-800);
+}
+.tagManagerContainer .react-select--single-value {
+  height: 1.8rem !important;
+}
+.tagManagerContainer .registrationTableContainer {
+  overflow-x: auto;
+}
+.tagManagerContainer .registrationTableContainer .table {
+  table-layout: auto;
+  width: 100%;
+}
+.tagManagerContainer .registrationTableContainer .table tr td:first-child {
+  padding: 1.4423076923rem;
+  min-width: 10px !important;
+  width: 10px !important;
+}
+
+.tagManagerContainer .table .cell-customId,
+.tagManagerContainer .table .cell-title,
+.tagManagerContainer .table .cell-tags {
+  width: auto;
+}
+
+// Hide first id cell
+.tagManagerContainer .table .cell-id,
+.tagManagerContainer .table #heading-id {
+  display: none;
+}
+
+.searchInputContainer {
+  padding: 0 2% 2% 2%;
+}
+.searchInputInnerContainer #field-search_input {
+  height: 2.8846153846rem !important;
+}
+.searchInputInnerContainer .field-type.text {
+  width: 50%;
+  margin-bottom: 0;
+}
+
+// Tag Management Side Nav
+.tagManagementContainer {
+  width: 100%;
+  margin-bottom: 0.9615384615rem;
+}
+.tagManagementContainer .btn {
+  color: rgb(47, 47, 47);
+  font-weight: 400;
+}
+.navButtonMarginOverride {
+  margin: 0 !important;
+}
+/* Hide Tags collection from Linkable Collections since Tags collection
+* is now under Tag Management
+*/
+.nav .nav__wrap #nav-tags {
+  display: none;
+}
+.slide-up {
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+  overflow: hidden;
+}
+.slide-down {
+  transition: max-height 0.3s ease-out;
+  max-height: 1000px; /* Adjust maximum height as needed */
+}
+.icon--flip {
+  transform: rotate(180deg);
+}
+
+.modelsContainer {
+  padding: 3% 4%;
+  height: 100%;
+}
