@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AdminView } from "payload/config";
 import { DefaultTemplate } from "payload/components/templates";
+import { fetchNotesClient } from "../utils/fetchNotes";
+import { INotesSchema } from "../schema/noteCollectionSchema";
 
 import "./Components.scss";
 
@@ -8,18 +10,18 @@ import "./Components.scss";
 const AdvocateNotes: AdminView = ({ user }) => {
   console.log(user);
 
+  const [notes, setNotes] = useState<Array<INotesSchema>>([]);
+
   useEffect(() => {
     const fetchNotes = async () => {
-      // const { userDefinedModels, errorMessage } =
-      //   await fetchModelsClientUnique();
-      // setModels(userDefinedModels);
-      // if (errorMessage) {
-      //   toast.error(errorMessage);
-      // }
+      const totalNotes = await fetchNotesClient();
+      setNotes(totalNotes);
     };
 
     fetchNotes();
   }, []);
+
+  console.log(notes);
 
   return (
     <DefaultTemplate>

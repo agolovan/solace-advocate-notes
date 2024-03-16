@@ -27,7 +27,7 @@ import { FAILED_TO_FETCH_ERROR_MESSAGE } from "../constants/validations";
 
 // Used to display all model versions
 // eslint-disable-next-line import/prefer-default-export
-export const fetchNotes = async () => {
+export const fetchNotesClient = async () => {
   try {
     const response = await fetch(
       `${window.location.origin}/${API}/${CUSTOM}/${V1}/${NOTES_COLLECTION}`

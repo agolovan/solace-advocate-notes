@@ -13,17 +13,17 @@ export const notesSchema = {
   createdAt: Date,
 };
 
-enum NoteType {
-  appoinment,
-  contract,
-}
+// enum NoteType {
+//   appoinment,
+//   contract,
+// }
 
 export interface INotesSchema {
-  email: string;
-  _id: any;
+  advocate: string;
+  client: string;
   title: string;
   notes: string;
-  type: NoteType;
+  type: string;
   createdBy: string;
   createdAt: Date;
 }

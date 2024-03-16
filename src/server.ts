@@ -1,28 +1,41 @@
 import express from "express";
 import payload from "payload";
+import { API, CUSTOM, V1 } from "./constants/routes";
+import apiRoutes from "./api/routes/v1routes";
+import { connectToMongodb } from "./databaseConnection";
 
+const serverStartTime = Date.now();
+const defaultPort = 3000;
+const requestSizeLimit = "500000kb";
 require("dotenv").config();
 
-const app = express();
-
-app.get("/", (_, res) => {
-  res.redirect("/admin/home");
-});
-
-const start = async () => {
+const initPayload = async (app: express.Express) => {
   // Initialize Payload
-  await payload.init({
+  console.log("Initialize Payload Start");
+  return payload.init({
     secret: process.env.PAYLOAD_SECRET,
     mongoURL: process.env.MONGODB_URI,
     express: app,
-    onInit: async () => {
+    onInit: () => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
     },
   });
+};
+const main = async () => {
+  const app = express();
+  app.use(express.json({ limit: requestSizeLimit }));
+  app.use(express.urlencoded({ extended: true, limit: requestSizeLimit }));
+  app.use(`/${API}/${CUSTOM}/${V1}`, apiRoutes);
+  console.log(
+    "Admin panel can be found at /admin - automatic redirect has been removed"
+  );
+  app.listen(defaultPort);
 
-  // Add your own express routes here
+  connectToMongodb();
+  await initPayload(app);
 
-  app.listen(3000);
+  const serverInitialized = Date.now();
+  console.log(`Server start time ${serverInitialized - serverStartTime}`);
 };
 
-start();
+main();

@@ -24,7 +24,7 @@ import * as express from "express";
 // import removeTagsHandler from "../tagManagerRemove";
 
 // import { TAGS_COLLECTION } from "../../constants/modelNames";
-import { NOTES_COLLECTION } from "../constants/routes";
+import { NOTES_COLLECTION } from "../../constants/routes";
 // import { getIslandedDataHandler } from "../utils/islandedData";
 
 const router = express.Router();
@@ -43,8 +43,29 @@ const router = express.Router();
 // router.route(`/${USER_CAN_ACCESS_ITEM}`).post(checkItemAccessHandler);
 // router.route(`/${GET_ACCESS_ITEMS}`).get(getAccessItemsHandler);
 
-const getNotes = () => {
-  console.log("I am here");
+const notesData = [
+  {
+    advocate: "agolovan@hotmail.com",
+    client: "client1@gmail.com",
+    title: "Find good therapist",
+    note: "Found great therapist - Mr. Peter Knock",
+    type: "Appoinment",
+    createdBy: "localDev@localDev.com",
+    createdAt: {
+      $date: "2024-03-14T04:50:53.000Z",
+    },
+  },
+];
+
+export const getNotes = async (_, res) => {
+  try {
+    // const modelData = await ModelCollectionModel.find();
+
+    res.send(notesData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
 };
 
 router.route(`/${NOTES_COLLECTION}`).get(getNotes);
