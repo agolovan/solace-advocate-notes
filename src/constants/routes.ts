@@ -31,5 +31,3 @@ export const TAG_MANAGER_ADD_TAGS = "tagManagerAddTags";
 
 export const USER_CAN_ACCESS_ITEM = "userCanAccessItem";
 export const GET_ACCESS_ITEMS = "getAcessItems";
-
-export const HELP = "help";

@@ -5,14 +5,17 @@ import { DefaultTemplate } from "payload/components/templates";
 
 import "./Components.scss";
 
-const AdvocateNotes: AdminView = ({ user }) => (
-  <DefaultTemplate>
-    <div className="modelsContainer">
-      <header>
-        <h3>Advocate Notes</h3>
-      </header>
-    </div>
-  </DefaultTemplate>
-);
+const AdvocateNotes: AdminView = ({ user }) => {
+  console.log(user);
+  return (
+    <DefaultTemplate>
+      <div className="modelsContainer">
+        <header>
+          <h3>Advocate Notes</h3>
+        </header>
+      </div>
+    </DefaultTemplate>
+  );
+};
 
 export default AdvocateNotes;

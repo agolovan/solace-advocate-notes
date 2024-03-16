@@ -33,14 +33,6 @@ const AfterNavLinks: React.FC = () => {
           className="navButtonMarginOverride"
           el="link"
           buttonStyle="icon-label"
-          to={`${adminRoute}/home`}
-        >
-          Home
-        </Button>
-        <Button
-          className="navButtonMarginOverride"
-          el="link"
-          buttonStyle="icon-label"
           to={`${adminRoute}/advocate-notes`}
         >
           Advocate Notes

@@ -5,6 +5,7 @@ import AdvocateNotes from "./components/AdvocateNotes";
 import Users from "./collections/Users";
 import AfterNavLinks from "./components/AfterNavLinks";
 import SolaceLanding from "./components/SolaceLanding";
+import SolaceHomeIcon from "./components/SolaceHomeIcon";
 
 const homeRoute: AdminRoute = {
   Component: SolaceLanding,
@@ -24,6 +25,7 @@ const advocateNotesRoute: AdminRoute = {
 
 export default buildConfig({
   admin: {
+    css: path.resolve(__dirname, "styles/globalOverride.scss"),
     user: Users.slug,
     webpack: (config) => {
       const newConfig = {
@@ -46,7 +48,8 @@ export default buildConfig({
       return newConfig;
     },
     components: {
-      routes: [homeRoute, advocateNotesRoute],
+      routes: [advocateNotesRoute, homeRoute],
+      beforeNavLinks: [SolaceHomeIcon],
       afterNavLinks: [AfterNavLinks],
     },
   },
