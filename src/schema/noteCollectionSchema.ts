@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { NOTES_COLLECTION } from "../constants/routes";
 
 export const notesSchema = {
   advocate: String,
@@ -23,7 +24,7 @@ export interface INotesSchema {
 export const NotesCollectionSchema = new mongoose.Schema(notesSchema);
 
 const NotesCollectionModel = mongoose.model(
-  "advocate-notes",
+  NOTES_COLLECTION,
   NotesCollectionSchema
 );
 
