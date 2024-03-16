@@ -7,8 +7,8 @@ import { INotesSchema } from "../schema/noteCollectionSchema";
 import "./Components.scss";
 
 // eslint-disable-next-line react/prop-types
-const AdvocateNotes: AdminView = ({ user }) => {
-  console.log(user);
+const AdvocateNotes: AdminView = () => {
+  // console.log(user);
 
   const [notes, setNotes] = useState<Array<INotesSchema>>([]);
 
@@ -21,7 +21,7 @@ const AdvocateNotes: AdminView = ({ user }) => {
     fetchNotes();
   }, []);
 
-  console.log(notes);
+  console.log(`notes: ${JSON.stringify(notes)}`);
 
   return (
     <DefaultTemplate>
