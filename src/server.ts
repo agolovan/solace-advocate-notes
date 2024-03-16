@@ -1,6 +1,6 @@
 import express from "express";
 import payload from "payload";
-import { API, CUSTOM, V1 } from "./constants/routes";
+import { API } from "./constants/routes";
 import apiRoutes from "./api/routes/v1routes";
 import { connectToMongodb } from "./databaseConnection";
 
@@ -25,7 +25,7 @@ const main = async () => {
   const app = express();
   app.use(express.json({ limit: requestSizeLimit }));
   app.use(express.urlencoded({ extended: true, limit: requestSizeLimit }));
-  app.use(`/${API}/${CUSTOM}/${V1}`, apiRoutes);
+  app.use(`/${API}`, apiRoutes);
   console.log(
     "Admin panel can be found at /admin - automatic redirect has been removed"
   );

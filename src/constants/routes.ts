@@ -1,11 +1,8 @@
 export const API = "api";
 export const NOTES_COLLECTION = "advocate-notes";
-export const IMPORT_COLLECTION = "importCollection";
-export const CUSTOM = "custom";
 export const IS_VALID_ID = "isValidId";
 export const FIELD = "field";
 export const SEARCH = "search";
-export const V1 = "v1";
 export const GET_MEDIA = "getMedia";
 export const LOCALIZATION_DEFAULT_COLLECTION = "DefaultLocalizedText";
 

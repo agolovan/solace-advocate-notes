@@ -21,14 +21,13 @@ const AdvocateNotes: AdminView = () => {
     fetchNotes();
   }, []);
 
-  console.log(`notes: ${JSON.stringify(notes)}`);
-
   return (
     <DefaultTemplate>
       <div className="modelsContainer">
         <header>
           <h3>Advocate Notes</h3>
         </header>
+        <div>{JSON.stringify(notes)}</div>
       </div>
     </DefaultTemplate>
   );

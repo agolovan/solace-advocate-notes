@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 // import cloneDeep from "lodash/cloneDeep";
 // import payload from "payload";
-import { API, CUSTOM, NOTES_COLLECTION, V1 } from "../constants/routes";
+import { API, NOTES_COLLECTION } from "../constants/routes";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 // import validateModelData from "../components/validator/validateModelData";
 
@@ -30,7 +30,7 @@ import { FAILED_TO_FETCH_ERROR_MESSAGE } from "../constants/validations";
 export const fetchNotesClient = async () => {
   try {
     const response = await fetch(
-      `${window.location.origin}/${API}/${CUSTOM}/${V1}/${NOTES_COLLECTION}`
+      `${window.location.origin}/${API}/${NOTES_COLLECTION}`
     );
     const totalNotes = (await response.json()) as Array<INotesSchema>;
     return totalNotes;
