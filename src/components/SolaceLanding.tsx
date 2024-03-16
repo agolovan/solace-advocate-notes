@@ -15,6 +15,10 @@ const SolaceLanding: AdminView = () => (
           alt="Solace Health"
         />
       </a>
+      <br />
+      <div className="landingPageText">
+        <h3>This is Colace Landing Page</h3>
+      </div>
     </div>
   </DefaultTemplate>
 );
