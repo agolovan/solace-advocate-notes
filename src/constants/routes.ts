@@ -1,5 +1,5 @@
 export const API = "api";
-export const STORE_COLLECTION = "storeCollection";
+export const NOTES_COLLECTION = "notesCollection";
 export const IMPORT_COLLECTION = "importCollection";
 export const CUSTOM = "custom";
 export const IS_VALID_ID = "isValidId";
