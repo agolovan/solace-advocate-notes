@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-import { Form, Submit } from "payload/components/forms";
+import { Form, Submit, Text } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
 import { useConfig } from "payload/components/utilities";
@@ -45,14 +45,19 @@ const NoteEditor: AdminView = () => {
     });
   };
 
+  const getInitialData = () => ({
+    title: "This is a title",
+  });
+
   return (
     <>
       <MinimalTemplate style={{ display: "flex" }}>
         <header>
           <h3>{`${isCreateNote ? `New` : `Edit`} Note`}</h3>
         </header>
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit} initialData={getInitialData()}>
           <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
+          <Text name="title" label="Title" required />
         </Form>
         <Button buttonStyle="secondary" onClick={deleteModel}>
           Delete

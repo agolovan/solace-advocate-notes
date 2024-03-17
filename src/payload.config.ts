@@ -10,7 +10,7 @@ import NoteEditor from "./components/NoteEditor";
 
 const adminRoute: AdminRoute = {
   Component: SolaceLanding,
-  path: "/",
+  path: "/home",
   exact: true,
   sensitive: false,
   strict: false,
