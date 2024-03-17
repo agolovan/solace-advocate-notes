@@ -1,11 +1,16 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-import { Form, Submit, Text } from "payload/components/forms";
+import { Form, Submit, Text, Select } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
 import { useConfig } from "payload/components/utilities";
 import { ToastContainer, toast, Slide } from "react-toastify";
+import {
+  minNoteChars,
+  maxNoteChars,
+  typeOptions,
+} from "../constants/validations";
 
 import "./Components.scss";
 
@@ -47,6 +52,9 @@ const NoteEditor: AdminView = () => {
 
   const getInitialData = () => ({
     title: "This is a title",
+    note: "This is a note for this client",
+    client: "client@gmail.com",
+    type: "appoinment",
   });
 
   return (
@@ -58,6 +66,15 @@ const NoteEditor: AdminView = () => {
         <Form onSubmit={onSubmit} initialData={getInitialData()}>
           <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
           <Text name="title" label="Title" required />
+          <Text
+            name="note"
+            label="Note"
+            required
+            minLength={minNoteChars}
+            maxLength={maxNoteChars}
+          />
+          <Text name="client" label="Client Email" required />
+          <Select name="type" label="Type" required options={typeOptions} />
         </Form>
         <Button buttonStyle="secondary" onClick={deleteModel}>
           Delete

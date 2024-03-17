@@ -88,7 +88,7 @@ const AdvocateNotes: AdminView = ({ user }) => {
                 </th>
                 <th id="heading-type">
                   <div className="sort-column">
-                    <span className="sort-column__label">Client</span>
+                    <span className="sort-column__label">Client Email</span>
                   </div>
                 </th>
                 <th id="heading-type">

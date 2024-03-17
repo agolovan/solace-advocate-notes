@@ -36,3 +36,11 @@ export const AVAILABLE_HOOKS = [
 ];
 
 export const MAXIMUM_IMPORT_ENTRIES_PER_REQUEST = 25;
+
+export const minNoteChars = 20;
+export const maxNoteChars = 300;
+
+export const typeOptions = [
+  { label: "Appoinment", value: "appointment" },
+  { label: "Contract", value: "contract" },
+];
