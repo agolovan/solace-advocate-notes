@@ -12,6 +12,7 @@ export const notesSchema = {
 };
 
 export interface INotesSchema {
+  _id: string;
   advocate: string;
   client: string;
   title: string;

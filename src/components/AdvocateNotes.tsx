@@ -4,7 +4,7 @@ import { AdminView } from "payload/config";
 import { useConfig } from "payload/components/utilities";
 import { DefaultTemplate } from "payload/components/templates";
 import { Button } from "payload/components";
-import { fetchNotesClient } from "../utils/fetchNotes";
+import { fetchNotes } from "../utils/restOperations";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { displayDateTime } from "../utils/utils";
 
@@ -20,14 +20,14 @@ const AdvocateNotes: AdminView = ({ user }) => {
   } = useConfig();
 
   useEffect(() => {
-    const fetchNotes = async () => {
+    const getNotes = async () => {
       // eslint-disable-next-line react/prop-types
-      const totalNotes = await fetchNotesClient(user.email);
+      const totalNotes = await fetchNotes(user.email);
       setNotes(totalNotes);
     };
 
     if (typeof user !== "undefined") {
-      fetchNotes();
+      getNotes();
     }
   }, [user]);
 

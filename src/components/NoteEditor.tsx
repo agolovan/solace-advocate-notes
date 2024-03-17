@@ -12,6 +12,7 @@ import {
   typeOptions,
 } from "../constants/validations";
 import { INotesSchema } from "../schema/noteCollectionSchema";
+import { deleteNote } from "../utils/restOperations";
 
 import "./Components.scss";
 
@@ -40,11 +41,14 @@ const NoteEditor: AdminView = () => {
     }
   };
 
-  const deleteModel = () => {
+  const deleteSelectedNote = async () => {
+    // eslint-disable-next-line no-underscore-dangle
+    deleteNote(noteToEdit._id);
     history.push({
       pathname: `${adminRoute}/advocate-notes`,
     });
   };
+
   const cancelOperation = () => {
     history.push({
       pathname: `${adminRoute}/advocate-notes`,
@@ -77,7 +81,7 @@ const NoteEditor: AdminView = () => {
           <Text name="client" label="Client Email" required />
           <Select name="type" label="Type" required options={typeOptions} />
         </Form>
-        <Button buttonStyle="secondary" onClick={deleteModel}>
+        <Button buttonStyle="secondary" onClick={deleteSelectedNote}>
           Delete
         </Button>
         <Button

@@ -17,7 +17,7 @@ const SolaceLanding: AdminView = () => (
       </a>
       <br />
       <div className="landingPageText">
-        <h3>This is Colace Landing Page</h3>
+        <h3>Thanks for fun project!</h3>
       </div>
     </div>
   </MinimalTemplate>

@@ -7,7 +7,10 @@ export const COULD_NOT_VALIDATE_INPUT_ERROR_MESSAGE =
 export const ATLEAST_ONE_FIELD_ERROR_MESSAGE =
   "Models must have at least one Field.";
 export const FAILED_TO_VALIDATE_ERROR_MESSAGE = `Failed to validate: `;
-export const FAILED_TO_FETCH_ERROR_MESSAGE = `Failed to fetch models via`;
+
+export const FAILED_TO_FETCH_NOTES = `Failed to fetch notes`;
+export const FAILED_TO_DELETE_NOTE = `Failed to delete note`;
+
 export const DUPLICATE_SLUG_ERROR_MESSAGE = "duplicate slug found:";
 export const DUPLICATE_FIELD_NAME = "duplicate field name";
 export const COLLECTION_NAME_IN_USE =
