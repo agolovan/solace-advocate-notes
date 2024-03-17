@@ -11,6 +11,7 @@ import {
   maxNoteChars,
   typeOptions,
 } from "../constants/validations";
+import { INotesSchema } from "../schema/noteCollectionSchema";
 
 import "./Components.scss";
 
@@ -18,7 +19,7 @@ const NoteEditor: AdminView = () => {
   const history = useHistory();
 
   const location = useLocation();
-  const noteToEdit = location?.state?.note;
+  const noteToEdit = location?.state?.note as INotesSchema;
   const clientAndTitleData = location?.state?.clientAndTitleData;
   console.log(noteToEdit);
   console.log(clientAndTitleData);
@@ -51,10 +52,10 @@ const NoteEditor: AdminView = () => {
   };
 
   const getInitialData = () => ({
-    title: "This is a title",
-    note: "This is a note for this client",
-    client: "client@gmail.com",
-    type: "appoinment",
+    title: noteToEdit.title,
+    note: noteToEdit.title,
+    client: noteToEdit.client,
+    type: noteToEdit.type,
   });
 
   return (
