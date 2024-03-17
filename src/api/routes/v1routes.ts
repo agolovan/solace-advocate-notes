@@ -4,9 +4,11 @@ import { NOTES_COLLECTION } from "../../constants/routes";
 
 const router = express.Router();
 
-export const getNotes = async (_, res) => {
+export const getNotes = async (req, res) => {
   try {
-    const notesData = await NotesCollectionModel.find();
+    const { email } = req.query;
+    const query = { advocate: email };
+    const notesData = await NotesCollectionModel.find(query);
     res.send(notesData);
   } catch (err) {
     console.log(err);

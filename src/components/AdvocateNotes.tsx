@@ -8,17 +8,20 @@ import { displayDateTime } from "../utils/utils";
 import "./Components.scss";
 
 // eslint-disable-next-line react/prop-types
-const AdvocateNotes: AdminView = () => {
+const AdvocateNotes: AdminView = ({ user }) => {
   const [notes, setNotes] = useState<Array<INotesSchema>>([]);
 
   useEffect(() => {
     const fetchNotes = async () => {
-      const totalNotes = await fetchNotesClient();
+      // eslint-disable-next-line react/prop-types
+      const totalNotes = await fetchNotesClient(user.email);
       setNotes(totalNotes);
     };
 
-    fetchNotes();
-  }, []);
+    if (typeof user !== "undefined") {
+      fetchNotes();
+    }
+  }, [user]);
 
   const displayNotes = notes?.map((note) => (
     <tr className="row-1">
