@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { AdminView } from "payload/config";
+import { useConfig } from "payload/components/utilities";
 import { DefaultTemplate } from "payload/components/templates";
+import { Button } from "payload/components";
 import { fetchNotesClient } from "../utils/fetchNotes";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { displayDateTime } from "../utils/utils";
@@ -10,6 +13,11 @@ import "./Components.scss";
 // eslint-disable-next-line react/prop-types
 const AdvocateNotes: AdminView = ({ user }) => {
   const [notes, setNotes] = useState<Array<INotesSchema>>([]);
+  const history = useHistory();
+
+  const {
+    routes: { admin: adminRoute },
+  } = useConfig();
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -23,13 +31,18 @@ const AdvocateNotes: AdminView = ({ user }) => {
     }
   }, [user]);
 
+  const editModel = () => {
+    history.push({
+      pathname: `${adminRoute}/advocate-notes/note-editor`,
+    });
+  };
+
   const displayNotes = notes?.map((note) => (
     <tr className="row-1">
-      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
       <td className="cell-client">
-        <a href="/admin/collections/Advocatenotes/65f6370f9f8ab6d30bc5b90e">
+        <Button className="buttonLink" onClick={editModel}>
           {note.title}
-        </a>
+        </Button>
       </td>
       <td className="cell-title">
         <span>{note.type}</span>
