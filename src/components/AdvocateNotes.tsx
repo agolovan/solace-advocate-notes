@@ -31,16 +31,26 @@ const AdvocateNotes: AdminView = ({ user }) => {
     }
   }, [user]);
 
-  const editModel = () => {
-    history.push({
-      pathname: `${adminRoute}/advocate-notes/note-editor`,
-    });
-  };
+  const clientAndTitleData = notes.map(({ client, title }) => ({
+    client,
+    title,
+  }));
 
   const displayNotes = notes?.map((note) => (
-    <tr className="row-1">
+    <tr className="row-1" key={note.client + note.title}>
       <td className="cell-client">
-        <Button className="buttonLink" onClick={editModel}>
+        <Button
+          className="buttonLink"
+          onClick={() => {
+            history.push({
+              pathname: `${adminRoute}/advocate-notes/note-editor`,
+              state: {
+                note,
+                clientAndTitleData,
+              },
+            });
+          }}
+        >
           {note.title}
         </Button>
       </td>
@@ -91,6 +101,18 @@ const AdvocateNotes: AdminView = ({ user }) => {
             <tbody>{displayNotes}</tbody>
           </table>
         </div>
+        <Button
+          onClick={() => {
+            history.push({
+              pathname: `${adminRoute}/advocate-notes/note-editor`,
+              state: {
+                clientAndTitleData,
+              },
+            });
+          }}
+        >
+          New Note
+        </Button>
       </div>
     </DefaultTemplate>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { Form, Submit } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
@@ -11,6 +11,14 @@ import "./Components.scss";
 
 const NoteEditor: AdminView = () => {
   const history = useHistory();
+
+  const location = useLocation();
+  const noteToEdit = location?.state?.note;
+  const clientAndTitleData = location?.state?.clientAndTitleData;
+  console.log(noteToEdit);
+  console.log(clientAndTitleData);
+
+  const isCreateNote = typeof noteToEdit === "undefined";
 
   const {
     routes: { admin: adminRoute },
@@ -41,10 +49,10 @@ const NoteEditor: AdminView = () => {
     <>
       <MinimalTemplate style={{ display: "flex" }}>
         <header>
-          <h3>Edit Note</h3>
+          <h3>{`${isCreateNote ? `New` : `Edit`} Note`}</h3>
         </header>
         <Form onSubmit={onSubmit}>
-          <Submit>Create</Submit>
+          <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
         </Form>
         <Button buttonStyle="secondary" onClick={deleteModel}>
           Delete
