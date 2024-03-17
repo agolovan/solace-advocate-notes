@@ -3,13 +3,12 @@ import { AdminView } from "payload/config";
 import { DefaultTemplate } from "payload/components/templates";
 import { fetchNotesClient } from "../utils/fetchNotes";
 import { INotesSchema } from "../schema/noteCollectionSchema";
+import { displayDateTime } from "../utils/utils";
 
 import "./Components.scss";
 
 // eslint-disable-next-line react/prop-types
 const AdvocateNotes: AdminView = () => {
-  // console.log(user);
-
   const [notes, setNotes] = useState<Array<INotesSchema>>([]);
 
   useEffect(() => {
@@ -21,38 +20,9 @@ const AdvocateNotes: AdminView = () => {
     fetchNotes();
   }, []);
 
-  console.log(notes);
-
   const displayNotes = notes?.map((note) => (
     <tr className="row-1">
       {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-      <td className="cell-select">
-        <div className="custom-checkbox">
-          <div className="custom-checkbox__input">
-            <input type="checkbox" />
-            <span className="custom-checkbox__icon check">
-              <svg
-                className="icon icon--check"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 25 25"
-              >
-                <path
-                  d="M10.6092 16.0192L17.6477 8.98076"
-                  className="stroke"
-                  strokeLinecap="square"
-                  strokeLinejoin="bevel"
-                />
-                <path
-                  d="M7.35229 12.7623L10.6092 16.0192"
-                  className="stroke"
-                  strokeLinecap="square"
-                  strokeLinejoin="bevel"
-                />
-              </svg>
-            </span>
-          </div>
-        </div>
-      </td>
       <td className="cell-client">
         <a href="/admin/collections/Advocatenotes/65f6370f9f8ab6d30bc5b90e">
           {note.title}
@@ -64,6 +34,9 @@ const AdvocateNotes: AdminView = () => {
       <td className="cell-type">
         <span>{note.client}</span>
       </td>
+      <td className="cell-type">
+        <span>{displayDateTime(note.createdAt)}</span>
+      </td>
     </tr>
   ));
 
@@ -71,43 +44,12 @@ const AdvocateNotes: AdminView = () => {
     <DefaultTemplate>
       <div className="notesContainer">
         <header>
-          <h3>Advocate Notes</h3>
+          <h3>My Notes</h3>
         </header>
         <div className="table">
           <table cellPadding="0" cellSpacing="0">
             <thead>
               <tr>
-                <th id="heading-_select">
-                  <div className="custom-checkbox">
-                    <div className="custom-checkbox__input">
-                      <input
-                        id="select-all"
-                        type="checkbox"
-                        aria-label="Select all rows"
-                      />
-                      <span className="custom-checkbox__icon check">
-                        <svg
-                          className="icon icon--check"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 25 25"
-                        >
-                          <path
-                            d="M10.6092 16.0192L17.6477 8.98076"
-                            className="stroke"
-                            strokeLinecap="square"
-                            strokeLinejoin="bevel"
-                          />
-                          <path
-                            d="M7.35229 12.7623L10.6092 16.0192"
-                            className="stroke"
-                            strokeLinecap="square"
-                            strokeLinejoin="bevel"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </th>
                 <th id="heading-client">
                   <div className="sort-column">
                     <span className="sort-column__label">Title</span>
@@ -121,6 +63,11 @@ const AdvocateNotes: AdminView = () => {
                 <th id="heading-type">
                   <div className="sort-column">
                     <span className="sort-column__label">Client</span>
+                  </div>
+                </th>
+                <th id="heading-type">
+                  <div className="sort-column">
+                    <span className="sort-column__label">Created</span>
                   </div>
                 </th>
               </tr>

@@ -7,9 +7,9 @@ import AfterNavLinks from "./components/AfterNavLinks";
 import SolaceLanding from "./components/SolaceLanding";
 import SolaceHomeIcon from "./components/SolaceHomeIcon";
 
-const homeRoute: AdminRoute = {
+const adminRoute: AdminRoute = {
   Component: SolaceLanding,
-  path: "/home",
+  path: "/",
   exact: true,
   sensitive: false,
   strict: false,
@@ -48,7 +48,7 @@ export default buildConfig({
       return newConfig;
     },
     components: {
-      routes: [advocateNotesRoute, homeRoute],
+      routes: [advocateNotesRoute, adminRoute],
       beforeNavLinks: [SolaceHomeIcon],
       afterNavLinks: [AfterNavLinks],
     },
@@ -56,8 +56,5 @@ export default buildConfig({
   collections: [Users],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
-  },
-  graphQL: {
-    schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
   },
 });
