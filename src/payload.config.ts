@@ -5,7 +5,6 @@ import AdvocateNotes from "./components/AdvocateNotes";
 import Users from "./collections/Users";
 import AfterNavLinks from "./components/AfterNavLinks";
 import SolaceLanding from "./components/SolaceLanding";
-import SolaceHomeIcon from "./components/SolaceHomeIcon";
 import NoteEditor from "./components/NoteEditor";
 
 const adminRoute: AdminRoute = {
@@ -49,6 +48,9 @@ export default buildConfig({
       return newConfig;
     },
     components: {
+      views: {
+        Dashboard: SolaceLanding,
+      },
       routes: [
         advocateNotesRoute,
         adminRoute,
@@ -57,7 +59,6 @@ export default buildConfig({
           Component: NoteEditor,
         },
       ],
-      beforeNavLinks: [SolaceHomeIcon],
       afterNavLinks: [AfterNavLinks],
     },
   },
