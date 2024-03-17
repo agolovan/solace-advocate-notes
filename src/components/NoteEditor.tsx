@@ -52,10 +52,10 @@ const NoteEditor: AdminView = () => {
   };
 
   const getInitialData = () => ({
-    title: noteToEdit.title,
-    note: noteToEdit.title,
-    client: noteToEdit.client,
-    type: noteToEdit.type,
+    title: !isCreateNote ? noteToEdit.title : "",
+    note: !isCreateNote ? noteToEdit.note : "",
+    client: !isCreateNote ? noteToEdit.client : "",
+    type: !isCreateNote ? noteToEdit.type : "",
   });
 
   return (
@@ -69,7 +69,7 @@ const NoteEditor: AdminView = () => {
           <Text name="title" label="Title" required />
           <Text
             name="note"
-            label="Note"
+            label="Note (min 20, max 300)"
             required
             minLength={minNoteChars}
             maxLength={maxNoteChars}

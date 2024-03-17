@@ -5,7 +5,7 @@ export const notesSchema = {
   advocate: String,
   client: String,
   title: String,
-  text: String,
+  note: String,
   type: String,
   createdBy: String,
   createdAt: Date,
@@ -15,7 +15,7 @@ export interface INotesSchema {
   advocate: string;
   client: string;
   title: string;
-  text: string;
+  note: string;
   type: string;
   createdBy: string;
   createdAt: Date;
