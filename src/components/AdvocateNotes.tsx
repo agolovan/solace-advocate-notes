@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { AdminView } from "payload/config";
+import { useConfig } from "payload/components/utilities";
 import { DefaultTemplate } from "payload/components/templates";
-import { fetchNotesClient } from "../utils/fetchNotes";
+import { Button } from "payload/components";
+import { fetchNotes } from "../utils/restOperations";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { displayDateTime } from "../utils/utils";
 
@@ -10,26 +13,40 @@ import "./Components.scss";
 // eslint-disable-next-line react/prop-types
 const AdvocateNotes: AdminView = ({ user }) => {
   const [notes, setNotes] = useState<Array<INotesSchema>>([]);
+  const history = useHistory();
+
+  const {
+    routes: { admin: adminRoute },
+  } = useConfig();
 
   useEffect(() => {
-    const fetchNotes = async () => {
+    const getNotes = async () => {
       // eslint-disable-next-line react/prop-types
-      const totalNotes = await fetchNotesClient(user.email);
+      const totalNotes = await fetchNotes(user.email);
       setNotes(totalNotes);
     };
 
     if (typeof user !== "undefined") {
-      fetchNotes();
+      getNotes();
     }
   }, [user]);
 
   const displayNotes = notes?.map((note) => (
-    <tr className="row-1">
-      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+    <tr className="row-1" key={note.client + note.title}>
       <td className="cell-client">
-        <a href="/admin/collections/Advocatenotes/65f6370f9f8ab6d30bc5b90e">
+        <Button
+          className="buttonLink"
+          onClick={() => {
+            history.push({
+              pathname: `${adminRoute}/advocate-notes/note-editor`,
+              state: {
+                note,
+              },
+            });
+          }}
+        >
           {note.title}
-        </a>
+        </Button>
       </td>
       <td className="cell-title">
         <span>{note.type}</span>
@@ -65,7 +82,7 @@ const AdvocateNotes: AdminView = ({ user }) => {
                 </th>
                 <th id="heading-type">
                   <div className="sort-column">
-                    <span className="sort-column__label">Client</span>
+                    <span className="sort-column__label">Client Email</span>
                   </div>
                 </th>
                 <th id="heading-type">
@@ -78,6 +95,15 @@ const AdvocateNotes: AdminView = ({ user }) => {
             <tbody>{displayNotes}</tbody>
           </table>
         </div>
+        <Button
+          onClick={() => {
+            history.push({
+              pathname: `${adminRoute}/advocate-notes/note-editor`,
+            });
+          }}
+        >
+          New Note
+        </Button>
       </div>
     </DefaultTemplate>
   );

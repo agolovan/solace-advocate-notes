@@ -1,12 +1,12 @@
 /* eslint react/prop-types: 0 */
 import React from "react";
 import { AdminView } from "payload/config";
-import { DefaultTemplate } from "payload/components/templates";
+import { MinimalTemplate } from "payload/components/templates";
 
 import "./Components.scss";
 
 const SolaceLanding: AdminView = () => (
-  <DefaultTemplate>
+  <MinimalTemplate>
     <div className="solaceLandingContainer">
       <a className="solaceLanding" href="https://www.solace.health/">
         <img
@@ -17,10 +17,10 @@ const SolaceLanding: AdminView = () => (
       </a>
       <br />
       <div className="landingPageText">
-        <h3>This is Colace Landing Page</h3>
+        <h3>Thanks for fun project!</h3>
       </div>
     </div>
-  </DefaultTemplate>
+  </MinimalTemplate>
 );
 
 export default SolaceLanding;

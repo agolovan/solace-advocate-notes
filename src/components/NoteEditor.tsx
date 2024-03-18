@@ -1,0 +1,116 @@
+import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
+
+import { Form, Submit, Text, Select } from "payload/components/forms";
+import { MinimalTemplate, Button } from "payload/components";
+import { AdminView } from "payload/config";
+import { useConfig, useAuth } from "payload/components/utilities";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
+import { INotesSchema } from "../schema/noteCollectionSchema";
+import { deleteNote, createNote as createAndUpdateNote } from "../utils/restOperations";
+
+import "./Components.scss";
+
+const NoteEditor: AdminView = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const { user } = useAuth();
+
+  const noteToEdit = location?.state?.note as INotesSchema;
+  const isCreateNote = typeof noteToEdit === "undefined";
+
+  const {
+    routes: { admin: adminRoute },
+  } = useConfig();
+
+  const onSubmit = async (fields: any) => {
+    try {
+      const newNote = {
+        // eslint-disable-next-line no-underscore-dangle
+        _id: !isCreateNote ? noteToEdit._id : undefined,
+        advocate: user.email,
+        title: fields.title.value,
+        note: fields.note.value,
+        client: fields.note.value,
+        type: fields.type.value,
+        createdAt: new Date().toUTCString(),
+        createdBy: user.email,
+      };
+
+      createAndUpdateNote(newNote);
+
+      history.push({
+        pathname: `${adminRoute}/advocate-notes`,
+      });
+      if (!isCreateNote) {
+        window.location.reload();
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const deleteOperation = async () => {
+    // eslint-disable-next-line no-underscore-dangle
+    deleteNote(noteToEdit._id);
+    history.push({
+      pathname: `${adminRoute}/advocate-notes`,
+    });
+  };
+
+  const cancelOperation = () => {
+    history.push({
+      pathname: `${adminRoute}/advocate-notes`,
+    });
+  };
+
+  const getInitialData = () => ({
+    title: !isCreateNote ? noteToEdit.title : "",
+    note: !isCreateNote ? noteToEdit.note : "",
+    client: !isCreateNote ? noteToEdit.client : "",
+    type: !isCreateNote ? noteToEdit.type : "",
+  });
+
+  return (
+    <>
+      <MinimalTemplate style={{ display: "flex" }}>
+        <header>
+          <h3>{`${isCreateNote ? `New` : `Edit`} Note`}</h3>
+        </header>
+        <Form onSubmit={onSubmit} initialData={getInitialData()}>
+          <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
+          <Text name="title" label="Title" required />
+          <Text
+            name="note"
+            label="Note (min 20, max 300)"
+            required
+            minLength={MIN_NOTE_CHARS}
+            maxLength={MAX_NOTE_CHARS}
+          />
+          <Text name="client" label="Client Email" required />
+          <Select name="type" label="Type" required options={typeOptions} />
+        </Form>
+        <Button buttonStyle="secondary" onClick={deleteOperation}>
+          Delete
+        </Button>
+        <Button
+          buttonStyle="secondary"
+          className="cancel-button"
+          onClick={cancelOperation}
+        >
+          Cancel
+        </Button>
+      </MinimalTemplate>
+      <ToastContainer
+        containerId="customToastContainer"
+        position="bottom-center"
+        transition={Slide}
+        icon={false}
+        newestOnTop
+      />
+    </>
+  );
+};
+
+export default NoteEditor;
