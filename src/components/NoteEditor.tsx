@@ -8,7 +8,7 @@ import { useConfig, useAuth } from "payload/components/utilities";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
 import { INotesSchema } from "../schema/noteCollectionSchema";
-import { deleteNote, createNote as createAndUpdateNote } from "../utils/restOperations";
+import { deleteNote, createAndUpdateNote } from "../utils/restOperations";
 
 import "./Components.scss";
 

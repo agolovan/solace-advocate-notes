@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import { AdminView } from "payload/config";
 import { useConfig } from "payload/components/utilities";
 import { DefaultTemplate } from "payload/components/templates";
@@ -23,6 +24,10 @@ const AdvocateNotes: AdminView = ({ user }) => {
     const getNotes = async () => {
       // eslint-disable-next-line react/prop-types
       const totalNotes = await fetchNotes(user.email);
+      totalNotes.sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
       setNotes(totalNotes);
     };
 

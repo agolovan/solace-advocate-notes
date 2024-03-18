@@ -24,7 +24,7 @@ export const fetchNotes = async (email: string) => {
 };
 
 // eslint-disable-next-line consistent-return
-export const createNote = async (note: INotesSchema) => {
+export const createAndUpdateNote = async (note: INotesSchema) => {
   try {
     const datas: RequestInit = {
       method: "POST",
