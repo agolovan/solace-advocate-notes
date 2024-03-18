@@ -4,6 +4,7 @@ import { INotesSchema } from "../schema/noteCollectionSchema";
 import {
   FAILED_TO_FETCH_NOTES,
   FAILED_TO_DELETE_NOTE,
+  FAILED_TO_CREATE_NOTE,
 } from "../constants/validations";
 
 // eslint-disable-next-line import/prefer-default-export
@@ -18,6 +19,30 @@ export const fetchNotes = async (email: string) => {
     return totalNotes;
   } catch (err) {
     console.warn(`${FAILED_TO_FETCH_NOTES}`, err.message);
+    return null;
+  }
+};
+
+// eslint-disable-next-line consistent-return
+export const createNote = async (note: INotesSchema) => {
+  try {
+    const datas: RequestInit = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json;charset=UTF-8",
+      },
+      body: JSON.stringify(note),
+    };
+
+    const response = await fetch(
+      `${window.location.origin}/${API}/${NOTES_COLLECTION}`,
+      datas
+    );
+    if (response.status !== 200) {
+      throw new Error(response.statusText);
+    }
+  } catch (err) {
+    console.warn(`${FAILED_TO_CREATE_NOTE}`, err.message);
     return null;
   }
 };

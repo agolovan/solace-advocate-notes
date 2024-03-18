@@ -19,6 +19,28 @@ export const getNotes = async (req, res) => {
   }
 };
 
+export const createNote = async (req, res) => {
+  try {
+    const note = req.body;
+    const newNodeCollection = new NotesCollectionModel({
+      advocate: note.advocate,
+      title: note.title,
+      note: note.note,
+      client: note.client,
+      type: note.type,
+      createdAt: note.createdAt,
+      createdBy: note.createdBy,
+    });
+
+    const result = await newNodeCollection.save();
+    console.log(`Updated Collection result: ${JSON.stringify(result)}`);
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+};
+
 export const deleteNote = async (req, res) => {
   try {
     const { id } = req.body;
@@ -34,6 +56,10 @@ export const deleteNote = async (req, res) => {
   }
 };
 
-router.route(`/${NOTES_COLLECTION}`).get(getNotes).delete(deleteNote);
+router
+  .route(`/${NOTES_COLLECTION}`)
+  .get(getNotes)
+  .post(createNote)
+  .delete(deleteNote);
 
 export default router;

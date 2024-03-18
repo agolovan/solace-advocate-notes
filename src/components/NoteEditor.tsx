@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Form, Submit, Text, Select } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
-import { useConfig } from "payload/components/utilities";
+import { useConfig, useAuth } from "payload/components/utilities";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import {
   minNoteChars,
@@ -12,14 +12,15 @@ import {
   typeOptions,
 } from "../constants/validations";
 import { INotesSchema } from "../schema/noteCollectionSchema";
-import { deleteNote } from "../utils/restOperations";
+import { deleteNote, createNote } from "../utils/restOperations";
 
 import "./Components.scss";
 
 const NoteEditor: AdminView = () => {
   const history = useHistory();
-
   const location = useLocation();
+  const { user } = useAuth();
+
   const noteToEdit = location?.state?.note as INotesSchema;
   const clientAndTitleData = location?.state?.clientAndTitleData;
   console.log(noteToEdit);
@@ -31,8 +32,20 @@ const NoteEditor: AdminView = () => {
     routes: { admin: adminRoute },
   } = useConfig();
 
-  const onSubmit = async () => {
+  const onSubmit = async (fields: any) => {
     try {
+      const newNote = {
+        advocate: user.email,
+        title: fields.title.value,
+        note: fields.note.value,
+        client: fields.note.value,
+        type: fields.type.value,
+        createdAt: new Date().toUTCString(),
+        createdBy: user.email,
+      };
+
+      createNote(newNote);
+
       history.push({
         pathname: `${adminRoute}/advocate-notes`,
       });
@@ -41,7 +54,7 @@ const NoteEditor: AdminView = () => {
     }
   };
 
-  const deleteSelectedNote = async () => {
+  const deleteOperation = async () => {
     // eslint-disable-next-line no-underscore-dangle
     deleteNote(noteToEdit._id);
     history.push({
@@ -81,7 +94,7 @@ const NoteEditor: AdminView = () => {
           <Text name="client" label="Client Email" required />
           <Select name="type" label="Type" required options={typeOptions} />
         </Form>
-        <Button buttonStyle="secondary" onClick={deleteSelectedNote}>
+        <Button buttonStyle="secondary" onClick={deleteOperation}>
           Delete
         </Button>
         <Button

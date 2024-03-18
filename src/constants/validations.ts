@@ -10,6 +10,7 @@ export const FAILED_TO_VALIDATE_ERROR_MESSAGE = `Failed to validate: `;
 
 export const FAILED_TO_FETCH_NOTES = `Failed to fetch notes`;
 export const FAILED_TO_DELETE_NOTE = `Failed to delete note`;
+export const FAILED_TO_CREATE_NOTE = `Failed to create note`;
 
 export const DUPLICATE_SLUG_ERROR_MESSAGE = "duplicate slug found:";
 export const DUPLICATE_FIELD_NAME = "duplicate field name";
@@ -44,6 +45,6 @@ export const minNoteChars = 20;
 export const maxNoteChars = 300;
 
 export const typeOptions = [
-  { label: "Appoinment", value: "appointment" },
-  { label: "Contract", value: "contract" },
+  { label: "appoinment", value: "appointment" },
+  { label: "contract", value: "contract" },
 ];
