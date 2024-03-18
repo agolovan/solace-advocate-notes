@@ -32,7 +32,7 @@ const NoteEditor: AdminView = () => {
         advocate: user.email,
         title: fields.title.value,
         note: fields.note.value,
-        client: fields.note.value,
+        client: fields.client.value,
         type: fields.type.value,
         createdAt: new Date().toUTCString(),
         createdBy: user.email,
