@@ -1,11 +1,11 @@
-import { API, NOTES_COLLECTION } from "../constants/routes";
-import { INotesSchema } from "../schema/noteCollectionSchema";
-
 import {
+  API,
+  NOTES_COLLECTION,
   FAILED_TO_FETCH_NOTES,
   FAILED_TO_DELETE_NOTE,
   FAILED_TO_CREATE_NOTE,
-} from "../constants/validations";
+} from "../constants";
+import { INotesSchema } from "../schema/noteCollectionSchema";
 
 // eslint-disable-next-line import/prefer-default-export
 export const fetchNotes = async (email: string) => {

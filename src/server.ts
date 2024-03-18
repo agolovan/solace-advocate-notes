@@ -1,6 +1,6 @@
 import express from "express";
 import payload from "payload";
-import { API } from "./constants/routes";
+import { API } from "./constants";
 import apiRoutes from "./api/routes/v1routes";
 import { connectToMongodb } from "./databaseConnection";
 

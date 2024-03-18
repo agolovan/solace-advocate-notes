@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { NOTES_COLLECTION } from "../constants/routes";
+import { NOTES_COLLECTION } from "../constants";
 
 export const notesSchema = {
   advocate: String,

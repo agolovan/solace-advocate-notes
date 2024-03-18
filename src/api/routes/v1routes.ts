@@ -1,7 +1,7 @@
 import * as express from "express";
 import mongoose from "mongoose";
 import NotesCollectionModel from "../../schema/noteCollectionSchema";
-import { NOTES_COLLECTION } from "../../constants/routes";
+import { NOTES_COLLECTION } from "../../constants";
 
 const { ObjectId } = mongoose.Types;
 

@@ -6,11 +6,7 @@ import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
 import { useConfig, useAuth } from "payload/components/utilities";
 import { ToastContainer, toast, Slide } from "react-toastify";
-import {
-  minNoteChars,
-  maxNoteChars,
-  typeOptions,
-} from "../constants/validations";
+import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { deleteNote, createNote } from "../utils/restOperations";
 
@@ -88,8 +84,8 @@ const NoteEditor: AdminView = () => {
             name="note"
             label="Note (min 20, max 300)"
             required
-            minLength={minNoteChars}
-            maxLength={maxNoteChars}
+            minLength={MIN_NOTE_CHARS}
+            maxLength={MAX_NOTE_CHARS}
           />
           <Text name="client" label="Client Email" required />
           <Select name="type" label="Type" required options={typeOptions} />
