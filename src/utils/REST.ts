@@ -15,16 +15,15 @@ export const fetchNotes = async (email: string) => {
         window.location.origin
       }/${API}/${NOTES_COLLECTION}/?email=${encodeURIComponent(email)}`
     );
-    const totalNotes = (await response.json()) as Array<INotesSchema>;
-    return totalNotes;
+    return (await response.json()) as Array<INotesSchema>;
   } catch (err) {
-    console.warn(`${FAILED_TO_FETCH_NOTES}`, err.message);
+    console.error(`${FAILED_TO_FETCH_NOTES}`, err.message);
     return null;
   }
 };
 
 // eslint-disable-next-line consistent-return
-export const createNote = async (note: INotesSchema) => {
+export const createAndUpdateNote = async (note: INotesSchema) => {
   try {
     const datas: RequestInit = {
       method: "POST",
@@ -39,11 +38,10 @@ export const createNote = async (note: INotesSchema) => {
       datas
     );
     if (response.status !== 200) {
-      throw new Error(response.statusText);
+      console.error(`${FAILED_TO_CREATE_NOTE}`);
     }
   } catch (err) {
-    console.warn(`${FAILED_TO_CREATE_NOTE}`, err.message);
-    return null;
+    console.error(`${FAILED_TO_CREATE_NOTE}`, err.message);
   }
 };
 
@@ -65,10 +63,9 @@ export const deleteNote = async (id: string) => {
       datas
     );
     if (response.status !== 200) {
-      throw new Error(response.statusText);
+      console.error(FAILED_TO_DELETE_NOTE);
     }
   } catch (err) {
     console.warn(`${FAILED_TO_DELETE_NOTE}`, err.message);
-    return null;
   }
 };

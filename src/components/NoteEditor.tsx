@@ -5,10 +5,9 @@ import { Form, Submit, Text, Select } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
 import { useConfig, useAuth } from "payload/components/utilities";
-import { ToastContainer, toast, Slide } from "react-toastify";
 import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
 import { INotesSchema } from "../schema/noteCollectionSchema";
-import { deleteNote, createNote as createAndUpdateNote } from "../utils/restOperations";
+import { deleteNote, createAndUpdateNote } from "../utils/REST";
 
 import "./Components.scss";
 
@@ -32,7 +31,7 @@ const NoteEditor: AdminView = () => {
         advocate: user.email,
         title: fields.title.value,
         note: fields.note.value,
-        client: fields.note.value,
+        client: fields.client.value,
         type: fields.type.value,
         createdAt: new Date().toUTCString(),
         createdBy: user.email,
@@ -43,11 +42,9 @@ const NoteEditor: AdminView = () => {
       history.push({
         pathname: `${adminRoute}/advocate-notes`,
       });
-      if (!isCreateNote) {
-        window.location.reload();
-      }
+      window.location.reload();
     } catch (error) {
-      toast.error(error.message);
+      console.error(error);
     }
   };
 
@@ -73,43 +70,34 @@ const NoteEditor: AdminView = () => {
   });
 
   return (
-    <>
-      <MinimalTemplate style={{ display: "flex" }}>
-        <header>
-          <h3>{`${isCreateNote ? `New` : `Edit`} Note`}</h3>
-        </header>
-        <Form onSubmit={onSubmit} initialData={getInitialData()}>
-          <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
-          <Text name="title" label="Title" required />
-          <Text
-            name="note"
-            label="Note (min 20, max 300)"
-            required
-            minLength={MIN_NOTE_CHARS}
-            maxLength={MAX_NOTE_CHARS}
-          />
-          <Text name="client" label="Client Email" required />
-          <Select name="type" label="Type" required options={typeOptions} />
-        </Form>
-        <Button buttonStyle="secondary" onClick={deleteOperation}>
-          Delete
-        </Button>
-        <Button
-          buttonStyle="secondary"
-          className="cancel-button"
-          onClick={cancelOperation}
-        >
-          Cancel
-        </Button>
-      </MinimalTemplate>
-      <ToastContainer
-        containerId="customToastContainer"
-        position="bottom-center"
-        transition={Slide}
-        icon={false}
-        newestOnTop
-      />
-    </>
+    <MinimalTemplate style={{ display: "flex" }}>
+      <header>
+        <h3>{`${isCreateNote ? `New` : `Edit`} Note`}</h3>
+      </header>
+      <Form onSubmit={onSubmit} initialData={getInitialData()}>
+        <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
+        <Text name="title" label="Title" required />
+        <Text
+          name="note"
+          label="Note (min 20, max 300)"
+          required
+          minLength={MIN_NOTE_CHARS}
+          maxLength={MAX_NOTE_CHARS}
+        />
+        <Text name="client" label="Client Email" required />
+        <Select name="type" label="Type" required options={typeOptions} />
+      </Form>
+      <Button buttonStyle="secondary" onClick={deleteOperation}>
+        Delete
+      </Button>
+      <Button
+        buttonStyle="secondary"
+        className="cancel-button"
+        onClick={cancelOperation}
+      >
+        Cancel
+      </Button>
+    </MinimalTemplate>
   );
 };
 

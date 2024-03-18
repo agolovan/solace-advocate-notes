@@ -45,7 +45,7 @@ export const createOrUpdateNote = async (req, res) => {
         return;
       }
 
-      const result = await doc.update(newNode);
+      const result = await doc.updateOne(newNode);
       console.log(result);
     } else {
       // Create new note
