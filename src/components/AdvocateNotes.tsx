@@ -5,7 +5,7 @@ import { AdminView } from "payload/config";
 import { useConfig } from "payload/components/utilities";
 import { DefaultTemplate } from "payload/components/templates";
 import { Button } from "payload/components";
-import { fetchNotes } from "../utils/restOperations";
+import { fetchNotes } from "../utils/REST";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { displayDateTime } from "../utils/utils";
 
@@ -95,8 +95,9 @@ const AdvocateNotes: AdminView = ({ user }) => {
     <DefaultTemplate>
       <div className="notesContainer">
         <header>
-          <h3>My Notes</h3>
+          <h2>My Notes</h2>
           <Button
+            className="createButton"
             buttonStyle="secondary"
             onClick={() => {
               history.push({
@@ -104,14 +105,14 @@ const AdvocateNotes: AdminView = ({ user }) => {
               });
             }}
           >
-            Create
+            New Note
           </Button>
         </header>
         <div className="search-filter">
           <input
             className="search-filter__input"
             type="text"
-            placeholder="Search notes"
+            placeholder="Search by Notes"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <Search />

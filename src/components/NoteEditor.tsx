@@ -5,10 +5,9 @@ import { Form, Submit, Text, Select } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
 import { useConfig, useAuth } from "payload/components/utilities";
-import { ToastContainer, toast, Slide } from "react-toastify";
 import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
 import { INotesSchema } from "../schema/noteCollectionSchema";
-import { deleteNote, createAndUpdateNote } from "../utils/restOperations";
+import { deleteNote, createAndUpdateNote } from "../utils/REST";
 
 import "./Components.scss";
 
@@ -43,11 +42,9 @@ const NoteEditor: AdminView = () => {
       history.push({
         pathname: `${adminRoute}/advocate-notes`,
       });
-      if (!isCreateNote) {
-        window.location.reload();
-      }
+      window.location.reload();
     } catch (error) {
-      toast.error(error.message);
+      console.error(error);
     }
   };
 
