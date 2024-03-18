@@ -43,7 +43,7 @@ const AdvocateNotes: AdminView = ({ user }) => {
     const getNotes = async () => {
       // eslint-disable-next-line react/prop-types
       const totalNotes = await fetchNotes(user.email);
-      totalNotes.sort(
+      totalNotes?.sort(
         (a, b) =>
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );

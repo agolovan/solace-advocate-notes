@@ -70,43 +70,34 @@ const NoteEditor: AdminView = () => {
   });
 
   return (
-    <>
-      <MinimalTemplate style={{ display: "flex" }}>
-        <header>
-          <h3>{`${isCreateNote ? `New` : `Edit`} Note`}</h3>
-        </header>
-        <Form onSubmit={onSubmit} initialData={getInitialData()}>
-          <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
-          <Text name="title" label="Title" required />
-          <Text
-            name="note"
-            label="Note (min 20, max 300)"
-            required
-            minLength={MIN_NOTE_CHARS}
-            maxLength={MAX_NOTE_CHARS}
-          />
-          <Text name="client" label="Client Email" required />
-          <Select name="type" label="Type" required options={typeOptions} />
-        </Form>
-        <Button buttonStyle="secondary" onClick={deleteOperation}>
-          Delete
-        </Button>
-        <Button
-          buttonStyle="secondary"
-          className="cancel-button"
-          onClick={cancelOperation}
-        >
-          Cancel
-        </Button>
-      </MinimalTemplate>
-      <ToastContainer
-        containerId="customToastContainer"
-        position="bottom-center"
-        transition={Slide}
-        icon={false}
-        newestOnTop
-      />
-    </>
+    <MinimalTemplate style={{ display: "flex" }}>
+      <header>
+        <h3>{`${isCreateNote ? `New` : `Edit`} Note`}</h3>
+      </header>
+      <Form onSubmit={onSubmit} initialData={getInitialData()}>
+        <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
+        <Text name="title" label="Title" required />
+        <Text
+          name="note"
+          label="Note (min 20, max 300)"
+          required
+          minLength={MIN_NOTE_CHARS}
+          maxLength={MAX_NOTE_CHARS}
+        />
+        <Text name="client" label="Client Email" required />
+        <Select name="type" label="Type" required options={typeOptions} />
+      </Form>
+      <Button buttonStyle="secondary" onClick={deleteOperation}>
+        Delete
+      </Button>
+      <Button
+        buttonStyle="secondary"
+        className="cancel-button"
+        onClick={cancelOperation}
+      >
+        Cancel
+      </Button>
+    </MinimalTemplate>
   );
 };
 

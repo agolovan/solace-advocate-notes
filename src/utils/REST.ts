@@ -15,10 +15,10 @@ export const fetchNotes = async (email: string) => {
         window.location.origin
       }/${API}/${NOTES_COLLECTION}/?email=${encodeURIComponent(email)}`
     );
-    const totalNotes = (await response.json()) as Array<INotesSchema>;
-    return totalNotes;
+    return (await response.json()) as Array<INotesSchema>;
   } catch (err) {
     console.error(`${FAILED_TO_FETCH_NOTES}`, err.message);
+    return null;
   }
 };
 
