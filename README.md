@@ -1,42 +1,56 @@
-# Payload Blank Template
+# Selecting technology for this project
+As I understand, the main condition to have fun with that, so I selected approaches that I would have fun for this project.
 
-A blank template for [Payload](https://github.com/payloadcms/payload) to help you get up and running quickly. This repo may have been created by running `npx create-payload-app@latest` and selecting the "blank" template or by cloning this template on [Payload Cloud](https://payloadcms.com/new/clone/blank).
+Front end: I selected React. Usually, when you join any company, you have to be consistent with framework that company is using. I have some recent experience with Payload framework https://payloadcms.com/, so I decided to use that as it will simplify a work and give more fun, as I think it is very logical and cool framework.
 
-See the official [Examples Directory](https://github.com/payloadcms/payload/tree/main/examples) for details on how to use Payload in a variety of different ways.
+Payload takes care about users for me, allow to add and delete users, and let us know for each component what is the logged user.
 
-## Development
+I think they are only talking about integration with Next.js now. 
 
-To spin up the project locally, follow these steps:
+Back end:  I was considering AWS Lambda functions, Azure functions and Nodejs/Express. However, for simplicity, I decided to use Nodejs/Express and typescript for both frond and back end. It is easy to debug, same utilties could be used for both front end and back end and I put that into same repository.
+I used Localstack for AWS Lambda functions, and serverless it may be better from many points of view, but I needed to finish that fast
 
-1. First clone the repo
-1. Then `cd YOUR_PROJECT_REPO && cp .env.example .env`
-1. Next `yarn && yarn dev` (or `docker-compose up`, see [Docker](#docker))
-1. Now `open http://localhost:3000/admin` to access the admin panel
-1. Create your first admin user using the form on the page
+Database: I decided to use MongoDB, put locally MongoDB Compass and did all development locally.
 
-That's it! Changes made in `./src` will be reflected in your app.
+# Assumptions: 
+I really need to talk to Advocates to make sure to follow what they want to see. For now, I decided to use email as unique key for each advocate. I also decided to have client property with email for client as unique key. 
 
-### Docker
+I also added a title - just short description what is that note about. It could be used for fast search and etc.
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this project locally. To do so, follow these steps:
+This is my document for each note - we may add filtering for type ( appointment or contract) and client.
+[{
+  "_id": {
+    "$oid": "65f6054aa025e8ba69085d73"
+  },
+  "advocate": "agolovan@hotmail.com",
+  "client": "client1@gmail.com",
+  "title": "Find good therapist for client 1",
+  "note": "Find good therapist for client1Find good therapist for client1Find good therapist for client1Find good therapist for client1Find good therapist for client1Find good therapist for client1Find good therapist for client1Find good therapist for client1Find good therapist for client1Find good therapist for client1",
+  "type": "appoinment",
+  "createdBy": "agolovan@hotmail.com",
+  "createdAt": {
+    "$date": "2024-03-14T04:50:53.000Z"
+  }
+}]
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+Currently, I allow create duplicate note with same title, client and etc ( It will be just different ID). I am not sure what are real business rules, may be for each client and advocate title should be unique, again, I need to interview advocate.
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
+I also add server side filtering for advocate to see only related notes. We may have admin user who see all messages. We also may add some roles based modules that allows some people only see notes, for some people edit, delete and etc.
 
-## Production
+For error conditions, I just log error messages into console. We could add toast messages, but again, it is not clear what does business want.
 
-To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
+# Setup
+- Install Mongodb local - or create database
+  - Install MongoD as a service
+  - Choose Run service as local or domain user
+    - Domain is `.`
+    - Account Name and Password are your machine (windows/mac) login credentials
+- Running Mongodb
+  - After installation - mongodb should be running and automatically start when computer restarts
+    MONGODB_URI=mongodb://127.0.0.1/solace
+    PAYLOAD_SECRET=944ea28fc5e41854c20feb63
+- Clone repository, install dependencies and start yarn dev
+- It should ask you to put email and password, it will be used as create notes
 
-1. First invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
-1. Then run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
-
-### Deployment
-
-The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo. You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+# Production
+This is just a local version. We might put that in cloud, but this is beyond this task.
