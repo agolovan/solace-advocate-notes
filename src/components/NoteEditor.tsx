@@ -8,7 +8,7 @@ import { useConfig, useAuth } from "payload/components/utilities";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
 import { INotesSchema } from "../schema/noteCollectionSchema";
-import { deleteNote, createNote } from "../utils/restOperations";
+import { deleteNote, createNote as createAndUpdateNote } from "../utils/restOperations";
 
 import "./Components.scss";
 
@@ -18,10 +18,6 @@ const NoteEditor: AdminView = () => {
   const { user } = useAuth();
 
   const noteToEdit = location?.state?.note as INotesSchema;
-  const clientAndTitleData = location?.state?.clientAndTitleData;
-  console.log(noteToEdit);
-  console.log(clientAndTitleData);
-
   const isCreateNote = typeof noteToEdit === "undefined";
 
   const {
@@ -31,6 +27,8 @@ const NoteEditor: AdminView = () => {
   const onSubmit = async (fields: any) => {
     try {
       const newNote = {
+        // eslint-disable-next-line no-underscore-dangle
+        _id: !isCreateNote ? noteToEdit._id : undefined,
         advocate: user.email,
         title: fields.title.value,
         note: fields.note.value,
@@ -40,11 +38,14 @@ const NoteEditor: AdminView = () => {
         createdBy: user.email,
       };
 
-      createNote(newNote);
+      createAndUpdateNote(newNote);
 
       history.push({
         pathname: `${adminRoute}/advocate-notes`,
       });
+      if (!isCreateNote) {
+        window.location.reload();
+      }
     } catch (error) {
       toast.error(error.message);
     }

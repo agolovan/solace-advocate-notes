@@ -19,10 +19,11 @@ export const getNotes = async (req, res) => {
   }
 };
 
-export const createNote = async (req, res) => {
+export const createOrUpdateNote = async (req, res) => {
   try {
     const note = req.body;
-    const newNodeCollection = new NotesCollectionModel({
+
+    const newNode = {
       advocate: note.advocate,
       title: note.title,
       note: note.note,
@@ -30,10 +31,27 @@ export const createNote = async (req, res) => {
       type: note.type,
       createdAt: note.createdAt,
       createdBy: note.createdBy,
-    });
+    };
 
-    const result = await newNodeCollection.save();
-    console.log(`Updated Collection result: ${JSON.stringify(result)}`);
+    const newNodeCollection = new NotesCollectionModel(newNode);
+
+    // eslint-disable-next-line no-underscore-dangle
+    const currentId = note._id;
+    if (typeof currentId !== "undefined") {
+      // Update existing note
+      const doc = await NotesCollectionModel.findById(currentId);
+      if (!doc) {
+        res.status(500).send(`Note id ${currentId} not found `);
+        return;
+      }
+
+      const result = await doc.update(newNode);
+      console.log(result);
+    } else {
+      // Create new note
+      const result = await newNodeCollection.save();
+      console.log(result);
+    }
     res.sendStatus(200);
   } catch (err) {
     console.log(err);
@@ -59,7 +77,7 @@ export const deleteNote = async (req, res) => {
 router
   .route(`/${NOTES_COLLECTION}`)
   .get(getNotes)
-  .post(createNote)
+  .post(createOrUpdateNote)
   .delete(deleteNote);
 
 export default router;
