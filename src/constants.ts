@@ -1,5 +1,5 @@
 export const API = "api";
-export const NOTES_COLLECTION = "advocate-notes";
+export const NOTES_COLLECTION = "advocatenotes";
 
 export const FAILED_TO_FETCH_NOTES = `Failed to fetch notes`;
 export const FAILED_TO_DELETE_NOTE = `Failed to delete note`;

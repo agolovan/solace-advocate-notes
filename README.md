@@ -17,6 +17,9 @@ I am using Chrome degugger for REACT front end, to debug serves side nodejs, I a
 
 I am using yarn "lint:fix" and "yarn tsc" fix and report issues in a code.  
 
+# Unit tests
+I usually write a lot of unit test and using TDD approach. However, I do that mostly for some busines logic to cover all edge cases and make sure that code is stable and future changes by different people are not going to break business logic. I like using testing-library. For this project, I could use mock objects to test react code without need to call back end, however, it will be over-engineering. Simple smoke testing will cover all scenarios.
+
 # Assumptions: 
 I really need to talk to advocates to follow what they want to see. For now, I decided to use email as unique key for each advocate. I also decided to have client property with email for client as unique key. 
 
@@ -44,18 +47,28 @@ I also add server side filtering for advocate to see only related notes. We may 
 
 For error conditions, I just log error messages into console. We could add toast messages, but again, it is not clear what does business want.
 
-# Setup
-- Install Mongodb local - or create database
+It will be good to add confirmation dialog when deleting a note
+
+# Setup database
+- Install Mongodb locally
   - Install MongoD as a service
   - Choose Run service as local or domain user
-    - Domain is `.`
-    - Account Name and Password are your machine (windows/mac) login credentials
-- Running Mongodb
+  Running Mongodb locally
   - After installation - mongodb should be running and automatically start when computer restarts
     MONGODB_URI=mongodb://127.0.0.1/solace
     PAYLOAD_SECRET=944ea28fc5e41854c20feb63
-- Clone repository, install dependencies and start yarn dev
-- It should ask you to put email and password, it will be used as create notes
 
-# Production
-This is just a local version. We might put that in cloud, but this is beyond this task.
+- Running Mongodb in MongoDB Atlas
+    MongoDB Atlas is a fully managed cloud database service provided by MongoDB, Inc. It allows users to deploy, manage, and scale MongoDB databases in the cloud, without the need for extensive administrative work.
+    MONGODB_URI = mongodb+srv://agolovan:JakeMila1234@cluster0.taibgev.mongodb.net/solace
+    PAYLOAD_SECRET=944ea28fc5e41854c20feb63
+
+- Update .env file depending where your database is locate - locally or MongoDB Altas
+- solace is the name of database in MongoDB
+
+# running localy database
+- Clone repository, install dependencies and start "yarn dev"
+
+# using app
+locally use url http://localhost:3000/admin 
+
