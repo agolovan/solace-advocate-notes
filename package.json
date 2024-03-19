@@ -1,11 +1,14 @@
 {
   "name": "solace-advocate-notes",
   "description": "Solace Advocate Notes",
+  "homepage": "https://agolovan.github.io/solace-advocate-notes",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
+    "start": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc",
     "build": "yarn copyfiles && yarn build:payload && yarn build:server",
@@ -23,6 +26,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "gh-pages": "^6.1.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.8.2",
     "payload": "1.14.0",
