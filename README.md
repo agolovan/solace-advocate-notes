@@ -69,6 +69,10 @@ It will be good to add confirmation dialog when deleting a note
 # running localy database
 - Clone repository, install dependencies and start "yarn dev"
 
-# using app
-locally use url http://localhost:3000/admin 
+# using app locally
+- locally use url http://localhost:3000/admin 
 
+# using system
+- use email: admin@gmail.com password: password to log first time. If you remove users collection from it will ask you at first time login to enter email/password
+- select Users from left nav menu to add advocates 
+- select Advocate Notes from left nav menu to enter notes for logged advocate
