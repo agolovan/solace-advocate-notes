@@ -3,17 +3,22 @@ As I understand, the main condition to have fun with that, so I selected approac
 
 Front end: I selected React. Usually, when you join any company, you have to be consistent with framework that company is using. I have some recent experience with Payload framework https://payloadcms.com/, so I decided to use that as it will simplify a work and give more fun, as I think it is very logical and cool framework.
 
-Payload takes care about users for me, allow to add and delete users, and let us know for each component what is the logged user.
-
-I think they are only talking about integration with Next.js now. 
+Payload takes care about users for me, allow to add and delete users, and let us know for each component what is the logged user. I think they are only talking about integration with Next.js now. 
 
 Back end:  I was considering AWS Lambda functions, Azure functions and Nodejs/Express. However, for simplicity, I decided to use Nodejs/Express and typescript for both frond and back end. It is easy to debug, same utilties could be used for both front end and back end and I put that into same repository.
-I used Localstack for AWS Lambda functions, and serverless it may be better from many points of view, but I needed to finish that fast
+I used Localstack for AWS Lambda functions, and serverless it may be better from many points of view, but not for this project.
+
+Between REST API and GraphQL, I decided to use simple REST API, as there is no over-fetching here. Just having endpoints for GET, POST and DELETE is simple and enough.
 
 Database: I decided to use MongoDB, put locally MongoDB Compass and did all development locally.
 
+# Development process
+I am using Chrome degugger for REACT front end, to debug serves side nodejs, I am using configuration "Debug Server" in Launch.json, and start debugging with this configuration allows to put break point inside server side code.
+
+I am using yarn "lint:fix" and "yarn tsc" fix and report issues in a code.  
+
 # Assumptions: 
-I really need to talk to Advocates to make sure to follow what they want to see. For now, I decided to use email as unique key for each advocate. I also decided to have client property with email for client as unique key. 
+I really need to talk to advocates to follow what they want to see. For now, I decided to use email as unique key for each advocate. I also decided to have client property with email for client as unique key. 
 
 I also added a title - just short description what is that note about. It could be used for fast search and etc.
 
