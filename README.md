@@ -55,15 +55,15 @@ It will be good to add confirmation dialog when deleting a note
   - Choose Run service as local or domain user
   Running Mongodb locally
   - After installation - mongodb should be running and automatically start when computer restarts
-    MONGODB_URI=mongodb://127.0.0.1/solace
-    PAYLOAD_SECRET=944ea28fc5e41854c20feb63
+    I did not use any env variables, just put that into constants fikle
 
-- Running Mongodb in MongoDB Atlas
+- Running with local Mongodb or MongoDB Atlas ( it is set to run in Atlas in Constants.ts)
     MongoDB Atlas is a fully managed cloud database service provided by MongoDB, Inc. It allows users to deploy, manage, and scale MongoDB databases in the cloud, without the need for extensive administrative work.
+    For Atlas:
     MONGODB_URI = mongodb+srv://agolovan:JakeMila1234@cluster0.taibgev.mongodb.net/solace
-    PAYLOAD_SECRET=944ea28fc5e41854c20feb63
-
-- Update .env file depending where your database is locate - locally or MongoDB Altas
+    For local:
+    MONGODB_URI = "mongodb://127.0.0.1/solace";
+  
 - solace is the name of database in MongoDB
 
 # running localy database
