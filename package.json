@@ -8,7 +8,7 @@
   "scripts": {
     "start": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "predeploy": "npm run build",
-    "deploy": "solace-gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc",
     "build": "yarn copyfiles && yarn build:payload && yarn build:server",
