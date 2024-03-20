@@ -1,7 +1,7 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import mongoose from "mongoose";
+import { MONGODB_URI } from "./constants";
 
-export const connectToMongodb = (uri = process.env.MONGODB_URI) => {
+export const connectToMongodb = (uri = MONGODB_URI) => {
   mongoose.connect(uri, {});
 
   mongoose.connection
