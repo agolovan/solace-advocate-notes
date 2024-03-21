@@ -69,6 +69,7 @@ const NoteEditor: AdminView = () => {
     type: !isCreateNote ? noteToEdit.type : "",
   });
 
+  console.log("Notes Editor");
   return (
     <MinimalTemplate style={{ display: "flex" }}>
       <header>
