@@ -54,7 +54,6 @@ const NoteEditor: AdminView = () => {
     history.push({
       pathname: `${adminRoute}/advocate-notes`,
     });
-    window.location.reload(); // Not a great approach
   };
 
   const cancelOperation = () => {
