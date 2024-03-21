@@ -42,7 +42,7 @@ const NoteEditor: AdminView = () => {
       history.push({
         pathname: `${adminRoute}/advocate-notes`,
       });
-      window.location.reload();
+      window.location.reload(); // Not a great approach, need to find how to refresh page without reloading
     } catch (error) {
       console.error(error);
     }
@@ -54,6 +54,7 @@ const NoteEditor: AdminView = () => {
     history.push({
       pathname: `${adminRoute}/advocate-notes`,
     });
+    window.location.reload(); // Not a great approach
   };
 
   const cancelOperation = () => {
