@@ -72,7 +72,15 @@ It will be good to add confirmation dialog when deleting a note
 # using app locally
 - locally use url http://localhost:3000/admin 
 
+# hosting
+- I decided to use Payload Cloud - because it takes care behing the scene to connect front rub both front end and back end. 
+- This is URL of public web site: https://solace-advocate-notes.payloadcms.app/admin
+
 # using system
 - use email: admin@gmail.com password: password to log first time. If you remove users collection from it will ask you at first time login to enter email/password
 - select Users from left nav menu to add advocates 
 - select Advocate Notes from left nav menu to enter notes for logged advocate
+
+# known issues
+- Sometimes the entered value is dissappeared and I have to enter that second time. Framework validations does not allow to enter wrong information, however this is not great, I did not have time to figure that out, may be something related to Payload framework. 
+
