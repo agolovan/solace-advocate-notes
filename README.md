@@ -41,7 +41,7 @@ This is my document for each note - we may add filtering for type ( appointment 
   }
 }]
 
-Currently, I allow create duplicate note with same title, client and etc ( It will be just different ID). I am not sure what are real business rules, may be for each client and advocate title should be unique, again, I need to interview advocate.
+Currently, I allow creating duplicate notes for same title, client and etc ( It will have different ID). I am not sure what are real business rules, may be for each client and advocate title should be unique, again, I need to interview advocate.
 
 I also add server side filtering for advocate to see only related notes. We may have admin user who see all messages. We also may add some roles based modules that allows some people only see notes, for some people edit, delete and etc.
 
@@ -82,5 +82,5 @@ It will be good to add confirmation dialog when deleting a note
 - select Advocate Notes from left nav menu to enter notes for logged advocate
 
 # known issues
-- Sometimes the entered value is dissappeared and I have to enter that second time. Framework validations does not allow to enter wrong information, however this is not great, I did not have time to figure that out, may be something related to Payload framework. 
+- Sometimes I noticed that the entered value just dissappeared and I have to enter that second time. Framework validations does not allow to enter wrong information. It is happening also at users screen which is the part of framework. The correct approach is to contact people at Payload Discord, may be I just need update used Payload version.  
 
