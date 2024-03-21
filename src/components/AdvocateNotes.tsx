@@ -95,7 +95,7 @@ const AdvocateNotes: AdminView = ({ user }) => {
     <DefaultTemplate>
       <div className="notesContainer">
         <header>
-          <h2>My Notes</h2>
+          <h2>My Notes Testing</h2>
           <Button
             className="createButton"
             buttonStyle="secondary"
