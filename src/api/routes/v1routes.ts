@@ -22,6 +22,7 @@ export const getNotes = async (req, res) => {
 export const createOrUpdateNote = async (req, res) => {
   try {
     const note = req.body;
+    console.log("createOrUpdateNote");
 
     const newNode = {
       advocate: note.advocate,
