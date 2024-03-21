@@ -3,7 +3,7 @@ As I understand, the main condition to have fun with that, so I selected approac
 
 Front end: I selected React. Usually, when you join any company, you have to be consistent with framework that company is using. I have some recent experience with Payload framework https://payloadcms.com/, so I decided to use that as it will simplify a work and give more fun, as I think it is very logical and cool framework.
 
-Payload takes care about users for me, allow to add and delete users, and let us know for each component what is the logged user. I think they are only talking about integration with Next.js now. 
+Payload takes care about users for me, allow to add and delete users, and we have information in each component what is logged user.  
 
 Back end:  I was considering AWS Lambda functions, Azure functions and Nodejs/Express. However, for simplicity, I decided to use Nodejs/Express and typescript for both frond and back end. It is easy to debug, same utilties could be used for both front end and back end and I put that into same repository.
 I used Localstack for AWS Lambda functions, and serverless it may be better from many points of view, but not for this project.
@@ -67,7 +67,7 @@ It will be good to add confirmation dialog when deleting a note
 - solace is the name of database in MongoDB
 
 # running localy database
-- Clone repository, install dependencies and start "yarn dev"
+- Clone repository, install dependencies and start "yarn start"
 
 # using app locally
 - locally use url http://localhost:3000/admin 

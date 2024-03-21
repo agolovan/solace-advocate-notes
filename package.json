@@ -7,8 +7,6 @@
   "license": "MIT",
   "scripts": {
     "start": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc",
     "build": "npm run copyfiles && npm run build:payload && npm run build:server",
