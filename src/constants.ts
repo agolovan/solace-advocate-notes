@@ -14,6 +14,6 @@ export const typeOptions = [
 ];
 
 export const MONGODB_URI =
-  "mongodb+srv://agolovan:JakeMila1234@cluster0.taibgev.mongodb.net/solace";
-// export const MONGODB_URI = "mongodb://127.0.0.1/solace";
+  "mongodb+srv://agolovan:JakeMila1234@cluster0.taibgev.mongodb.net/solace"; // For MongoDB in Atlas
+// export const MONGODB_URI = "mongodb://127.0.0.1/solace";  // for local MongoDB
 export const PAYLOAD_SECRET = "944ea28fc5e41854c20feb63";

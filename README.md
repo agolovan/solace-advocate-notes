@@ -1,7 +1,7 @@
 # Selecting technology for this project
 As I understand, the main condition to have fun with that, so I selected approaches that I would have fun for this project.
 
-Front end: I selected React. Usually, when you join any company, you have to be consistent with framework that company is using. I have some recent experience with Payload framework https://payloadcms.com/, so I decided to use that as it will simplify a work and give more fun, as I think it is very logical and cool framework.
+Front end: I selected React. Usually, when you join any company, you have to be consistent with framework that company is using. I have some recent experience with Payload framework https://payloadcms.com/, so I decided to use that as it will simplify a work and give more fun, as I think it is very logical and cool framework.  
 
 Payload takes care about users for me, allow to add and delete users, and we have information in each component what is logged user.  
 
@@ -47,7 +47,7 @@ I also add server side filtering for advocate to see only related notes. We may 
 
 For error conditions, I just log error messages into console. We could add toast messages, but again, it is not clear what does business want.
 
-It will be good to add confirmation dialog when deleting a note
+It will be good to add confirmation dialog when deleting a note, it is just delete a note after clicking delete button
 
 # Setup database
 - Install Mongodb locally
@@ -57,13 +57,13 @@ It will be good to add confirmation dialog when deleting a note
   - After installation - mongodb should be running and automatically start when computer restarts
     I did not use any env variables, just put that into constants fikle
 
-- Running with local Mongodb or MongoDB Atlas ( it is set to run in Atlas in Constants.ts)
+- Running with local Mongodb or MongoDB Atlas
     MongoDB Atlas is a fully managed cloud database service provided by MongoDB, Inc. It allows users to deploy, manage, and scale MongoDB databases in the cloud, without the need for extensive administrative work.
     For Atlas:
     MONGODB_URI = mongodb+srv://agolovan:JakeMila1234@cluster0.taibgev.mongodb.net/solace
     For local:
     MONGODB_URI = "mongodb://127.0.0.1/solace";
-  
+- Usually, each deployment solution allows setting env variables, but for this app I just use constants file.   
 - solace is the name of database in MongoDB
 
 # running localy database
@@ -72,15 +72,13 @@ It will be good to add confirmation dialog when deleting a note
 # using app locally
 - locally use url http://localhost:3000/admin 
 
-# hosting
-- I decided to use Payload Cloud - because it takes care behing the scene to connect front rub both front end and back end. 
-- This is URL of public web site: https://solace-advocate-notes.payloadcms.app/admin
+# deployment
+- I decided to use Payload Cloud - A deployment solution specifically designed for Node.js + MongoDB applications.
+  https://payloadcms.com/docs/cloud/creating-a-project
 
 # using system
-- use email: admin@gmail.com password: password to log first time. If you remove users collection from it will ask you at first time login to enter email/password
+- use email: "admin@gmail.com" "password: password" to log first time. If you remove all users, it will ask you at first time login to enter email/password for logged user. 
 - select Users from left nav menu to add advocates 
 - select Advocate Notes from left nav menu to enter notes for logged advocate
-
-# known issues
-- Sometimes I noticed that the entered value just dissappeared and I have to enter that second time. Framework validations does not allow to enter wrong information. It is happening also at users screen which is the part of framework. The correct approach is to contact people at Payload Discord, may be I just need update used Payload version.  
+- watch video of how to use system 
 

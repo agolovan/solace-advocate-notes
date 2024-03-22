@@ -62,7 +62,7 @@ const NoteEditor: AdminView = () => {
     });
   };
 
-  const getInitialData = () => ({
+  const loadInitialData = () => ({
     title: !isCreateNote ? noteToEdit.title : "",
     note: !isCreateNote ? noteToEdit.note : "",
     client: !isCreateNote ? noteToEdit.client : "",
@@ -75,7 +75,11 @@ const NoteEditor: AdminView = () => {
       <header>
         <h3>{`${isCreateNote ? `New` : `Edit`} Note`}</h3>
       </header>
-      <Form onSubmit={onSubmit} initialData={getInitialData()}>
+      <Form
+        onSubmit={onSubmit}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...(!isCreateNote ? { initialData: loadInitialData() } : {})}
+      >
         <Submit>{`${isCreateNote ? `Create` : `Update`}`}</Submit>
         <Text name="title" label="Title" required />
         <Text
