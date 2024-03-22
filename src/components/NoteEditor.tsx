@@ -37,12 +37,11 @@ const NoteEditor: AdminView = () => {
         createdBy: user.email,
       };
 
-      createAndUpdateNote(newNote);
+      await createAndUpdateNote(newNote);
 
       history.push({
         pathname: `${adminRoute}/advocate-notes`,
       });
-      // window.location.reload(); // Not a great approach, need to find how to refresh page without reloading
     } catch (error) {
       console.error(error);
     }
@@ -50,7 +49,7 @@ const NoteEditor: AdminView = () => {
 
   const deleteOperation = async () => {
     // eslint-disable-next-line no-underscore-dangle
-    deleteNote(noteToEdit._id);
+    await deleteNote(noteToEdit._id);
     history.push({
       pathname: `${adminRoute}/advocate-notes`,
     });
@@ -92,7 +91,11 @@ const NoteEditor: AdminView = () => {
         <Text name="client" label="Client Email" required />
         <Select name="type" label="Type" required options={typeOptions} />
       </Form>
-      <Button buttonStyle="secondary" onClick={deleteOperation}>
+      <Button
+        buttonStyle="secondary"
+        onClick={deleteOperation}
+        disabled={isCreateNote}
+      >
         Delete
       </Button>
       <Button
