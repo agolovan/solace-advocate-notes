@@ -19,24 +19,21 @@
 
 .buttonLink {
   background: none;
-  color: darkslategrey;
+  color: black;
   border: none;
-  cursor: pointer;
-  padding: 0;
   font: inherit;
-  outline: none;
-  text-decoration: underline;
-};
+  font-weight: 600;
+}
 
 .buttonLink:hover {
-  background-color: #0056b3; /* New button color on hover */
-  color: #fff; /* New text color on hover */
-  cursor: pointer; /* New cursor style on hover */
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .createButton {
   margin-top: -10%;
-  margin-bottom: 3%;;
+  margin-bottom: 3%;
+  ;
 }
 
 .cancel-button {
@@ -61,10 +58,11 @@
     border: none;
 
     &:not(:disabled) {
-        &:hover, &:focus {
+
+      &:hover,
+      &:focus {
         box-shadow: none;
       }
     }
   }
 }
-

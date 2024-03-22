@@ -83,3 +83,6 @@ It will be good to add confirmation dialog when deleting a note, it is just dele
 - select Advocate Notes from left nav menu to enter notes for logged advocate
 - watch video of how to use system 
 
+# note
+I made couple fixes after I submitted code and video. 
+App at this link: https://solace-advocate-notes.payloadcms.app/admin should work correctly.

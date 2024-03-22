@@ -62,8 +62,8 @@ const AdvocateNotes: AdminView = ({ user }) => {
   const displayNotes = filteredNotes?.map((note) => (
     <tr className="row-1" key={note.client + note.title}>
       <td className="cell-client">
-        <Button
-          className="buttonLink"
+        <button
+          type="button"
           onClick={() => {
             history.push({
               pathname: `${adminRoute}/advocate-notes/note-editor`,
@@ -72,9 +72,12 @@ const AdvocateNotes: AdminView = ({ user }) => {
               },
             });
           }}
+          className="buttonLink"
         >
-          {note.title}
-        </Button>
+          <span className="btn__content">
+            <span className="btn__label">{note.title}</span>
+          </span>
+        </button>
       </td>
       <td className="cell-title">
         <span>{note.note}</span>
