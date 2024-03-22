@@ -1,9 +1,10 @@
 # Selecting technology for this project
 As I understand, the main condition to have fun with that, so I selected approaches that I would have fun for this project.
 
-Front end: I selected React. Usually, when you join any company, you have to be consistent with framework that company is using. I have some recent experience with Payload framework https://payloadcms.com/, so I decided to use that as it will simplify a work and give more fun, as I think it is very logical and cool framework.  
+Front end: I selected React. Usually, when you join any company, you have to be consistent with framework that company is using. I have some recent experience with Payload framework https://payloadcms.com/, so I decided to use that as it will simplify a work and give more fun, as I think it is very logical and cool framework. 
+For Next.js: This is the 3.0  - Payload team is working on it rn and it's in alpha phase right now. Paul said in general that 3.0 is aimed to be stable in about a month. 
 
-Payload takes care about users for me, allow to add and delete users, and we have information in each component what is logged user.  
+Payload takes care about users for me, allow to add and delete users, and we have information in each component what is logged user. It also takes care about mobile version. 
 
 Back end:  I was considering AWS Lambda functions, Azure functions and Nodejs/Express. However, for simplicity, I decided to use Nodejs/Express and typescript for both frond and back end. It is easy to debug, same utilties could be used for both front end and back end and I put that into same repository.
 I used Localstack for AWS Lambda functions, and serverless it may be better from many points of view, but not for this project.
