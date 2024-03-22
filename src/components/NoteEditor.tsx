@@ -63,10 +63,10 @@ const NoteEditor: AdminView = () => {
   };
 
   const loadInitialData = () => ({
-    title: !isCreateNote ? noteToEdit.title : "",
-    note: !isCreateNote ? noteToEdit.note : "",
-    client: !isCreateNote ? noteToEdit.client : "",
-    type: !isCreateNote ? noteToEdit.type : "",
+    title: noteToEdit.title,
+    note: noteToEdit.note,
+    client: noteToEdit.client,
+    type: noteToEdit.type,
   });
 
   console.log("Notes Editor");
