@@ -31,8 +31,8 @@ const Search: React.FC = () => (
 
 // eslint-disable-next-line react/prop-types
 const AdvocateNotes: AdminView = () => {
+  // TODO: put in shared custom hook
   const history = useHistory();
-
   const {
     routes: { admin: adminRoute },
   } = useConfig();

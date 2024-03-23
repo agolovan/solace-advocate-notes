@@ -11,6 +11,7 @@ import { deleteNote, createAndUpdateNote } from "../utils/REST";
 import "./Components.scss";
 
 const NoteEditor: AdminView = () => {
+  // TODO: put in shared custom hook
   const history = useHistory();
   const {
     routes: { admin: adminRoute },
