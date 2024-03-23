@@ -1,28 +1,17 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Form, Submit, Text, Select } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
-import { useConfig, useAuth } from "payload/components/utilities";
 import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { deleteNote, createAndUpdateNote } from "../utils/REST";
+import useRedirectLogin from "./RedirectLogin";
 
 import "./Components.scss";
 
 const NoteEditor: AdminView = () => {
-  // TODO: put in shared custom hook
-  const history = useHistory();
-  const {
-    routes: { admin: adminRoute },
-  } = useConfig();
-
-  const { user } = useAuth();
-  if (!user) {
-    history.push({
-      pathname: `${adminRoute}`,
-    });
-  }
+  const { user, adminRoute, history } = useRedirectLogin();
 
   const location = useLocation();
 

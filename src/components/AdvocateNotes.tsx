@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-
 import { AdminView } from "payload/config";
-import { useConfig, useAuth } from "payload/components/utilities";
 import { DefaultTemplate } from "payload/components/templates";
 import { Button } from "payload/components";
 import { fetchNotes } from "../utils/REST";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { displayDateTime } from "../utils/utils";
+import useRedirectLogin from "./RedirectLogin";
 
 import "./Components.scss";
 
@@ -31,18 +29,7 @@ const Search: React.FC = () => (
 
 // eslint-disable-next-line react/prop-types
 const AdvocateNotes: AdminView = () => {
-  // TODO: put in shared custom hook
-  const history = useHistory();
-  const {
-    routes: { admin: adminRoute },
-  } = useConfig();
-
-  const { user } = useAuth();
-  if (!user) {
-    history.push({
-      pathname: `${adminRoute}`,
-    });
-  }
+  const { user, adminRoute, history } = useRedirectLogin();
 
   const [notes, setNotes] = useState<Array<INotesSchema>>([]);
   const [searchTerm, setSearchTerm] = useState("");
