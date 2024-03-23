@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
-
 import { Form, Submit, Text, Select } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
@@ -13,15 +12,21 @@ import "./Components.scss";
 
 const NoteEditor: AdminView = () => {
   const history = useHistory();
-  const location = useLocation();
-  const { user } = useAuth();
-
-  const noteToEdit = location?.state?.note as INotesSchema;
-  const isCreateNote = typeof noteToEdit === "undefined";
-
   const {
     routes: { admin: adminRoute },
   } = useConfig();
+
+  const { user } = useAuth();
+  if (!user) {
+    history.push({
+      pathname: `${adminRoute}`,
+    });
+  }
+
+  const location = useLocation();
+
+  const noteToEdit = location?.state?.note as INotesSchema;
+  const isCreateNote = typeof noteToEdit === "undefined";
 
   const onSubmit = async (fields: any) => {
     try {

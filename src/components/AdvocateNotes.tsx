@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { AdminView } from "payload/config";
-import { useConfig } from "payload/components/utilities";
+import { useConfig, useAuth } from "payload/components/utilities";
 import { DefaultTemplate } from "payload/components/templates";
 import { Button } from "payload/components";
 import { fetchNotes } from "../utils/REST";
@@ -30,18 +30,25 @@ const Search: React.FC = () => (
 );
 
 // eslint-disable-next-line react/prop-types
-const AdvocateNotes: AdminView = ({ user }) => {
-  const [notes, setNotes] = useState<Array<INotesSchema>>([]);
-  const [searchTerm, setSearchTerm] = useState("");
+const AdvocateNotes: AdminView = () => {
   const history = useHistory();
 
   const {
     routes: { admin: adminRoute },
   } = useConfig();
 
+  const { user } = useAuth();
+  if (!user) {
+    history.push({
+      pathname: `${adminRoute}`,
+    });
+  }
+
+  const [notes, setNotes] = useState<Array<INotesSchema>>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     const getNotes = async () => {
-      // eslint-disable-next-line react/prop-types
       const totalNotes = await fetchNotes(user.email);
       totalNotes?.sort(
         (a, b) =>
@@ -50,9 +57,7 @@ const AdvocateNotes: AdminView = ({ user }) => {
       setNotes(totalNotes);
     };
 
-    if (typeof user !== "undefined") {
-      getNotes();
-    }
+    getNotes();
   }, [user]);
 
   const filteredNotes = notes?.filter((item) =>
