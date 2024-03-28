@@ -1,27 +1,22 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 import { Form, Submit, Text, Select } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
-import { useConfig, useAuth } from "payload/components/utilities";
 import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { deleteNote, createAndUpdateNote } from "../utils/REST";
+import useRedirectLogin from "./RedirectLogin";
 
 import "./Components.scss";
 
 const NoteEditor: AdminView = () => {
-  const history = useHistory();
+  const { user, adminRoute, history } = useRedirectLogin();
+
   const location = useLocation();
-  const { user } = useAuth();
 
   const noteToEdit = location?.state?.note as INotesSchema;
   const isCreateNote = typeof noteToEdit === "undefined";
-
-  const {
-    routes: { admin: adminRoute },
-  } = useConfig();
 
   const onSubmit = async (fields: any) => {
     try {

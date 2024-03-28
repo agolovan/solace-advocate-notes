@@ -7,14 +7,6 @@ import AfterNavLinks from "./components/AfterNavLinks";
 import SolaceLanding from "./components/SolaceLanding";
 import NoteEditor from "./components/NoteEditor";
 
-const adminRoute: AdminRoute = {
-  Component: SolaceLanding,
-  path: "/home",
-  exact: true,
-  sensitive: false,
-  strict: false,
-};
-
 const advocateNotesRoute: AdminRoute = {
   Component: AdvocateNotes,
   path: "/advocate-notes",
@@ -53,7 +45,6 @@ export default buildConfig({
       },
       routes: [
         advocateNotesRoute,
-        adminRoute,
         {
           path: "/advocate-notes/note-editor",
           Component: NoteEditor,
