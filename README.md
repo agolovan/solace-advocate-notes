@@ -20,7 +20,7 @@ I am using yarn "lint:fix" and "yarn tsc" fix and report issues in a code.
 I usually write a lot of unit test and using TDD approach with testing-library or vitest ( testing-library is my favorite). 
 I do that mostly for some busines logic to cover all edge cases and make sure that code is always stable. For this project it is over-engineering.
 
-# Assumptions: 
+# Assumptions 
 I am using email as unique key for each advocate.  
 I added fields that could be usefull to add more filtering or create unique keys:
 id (internal id for MongoDB), advocate ( email), client (email), title (title of the mote), note (text of the note), 
@@ -50,23 +50,6 @@ Currently, there is no confirmation dialog when deleting a note.
 - Usually, each deployment solution allows setting env variables, but for this app I just use constants file.   
 - solace is the name of database in MongoDB
 
-# running localy database
+# Running localy 
 - Clone repository, install dependencies and start "yarn start"
-
-# using app locally
-- locally use url http://localhost:3000/admin 
-
-# deployment
-- I decided to use Payload Cloud - A deployment solution specifically designed for Node.js + MongoDB applications.
-  https://payloadcms.com/docs/cloud/creating-a-project
-
-# using system
-- Use this link to run app from Payload Cloud: https://solace-advocate-notes.payloadcms.app/admin 
-- Use email: "advocate1@gmail.com" "password: password" to log. I created one test note for this user.
-- select Users from left nav menu to add advocates. 
-- select Advocate Notes from left nav menu to enter notes for logged advocate.
-- watch video of how to use system. 
-
-# note
-I made couple fixes after I submitted code and video. 
-App at this link: https://solace-advocate-notes.payloadcms.app/admin should work correctly.
+- Use url http://localhost:3000/admin 
