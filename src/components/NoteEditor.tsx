@@ -3,7 +3,13 @@ import { useLocation } from "react-router-dom";
 import { Form, Submit, Text, Select } from "payload/components/forms";
 import { MinimalTemplate, Button } from "payload/components";
 import { AdminView } from "payload/config";
-import { MIN_NOTE_CHARS, MAX_NOTE_CHARS, typeOptions } from "../constants";
+import {
+  MIN_NOTE_CHARS,
+  MAX_NOTE_CHARS,
+  typeOptions,
+  EMAIL_REGEX,
+  VALIDATION_EMAIL_ADDRESS,
+} from "../constants";
 import { INotesSchema } from "../schema/noteCollectionSchema";
 import { deleteNote, createAndUpdateNote } from "../utils/REST";
 import useRedirectLogin from "./RedirectLogin";
@@ -63,7 +69,11 @@ const NoteEditor: AdminView = () => {
     type: noteToEdit.type,
   });
 
-  console.log("Notes Editor");
+  const validateEmail = (value: string): string | true => {
+    const isValidEmailAddress = EMAIL_REGEX.test(value);
+    return !isValidEmailAddress ? VALIDATION_EMAIL_ADDRESS : true;
+  };
+
   return (
     <MinimalTemplate style={{ display: "flex" }}>
       <header>
@@ -83,7 +93,12 @@ const NoteEditor: AdminView = () => {
           minLength={MIN_NOTE_CHARS}
           maxLength={MAX_NOTE_CHARS}
         />
-        <Text name="client" label="Client Email" required />
+        <Text
+          name="client"
+          label="Client Email"
+          validate={validateEmail}
+          required
+        />
         <Select name="type" label="Type" required options={typeOptions} />
       </Form>
       <Button
